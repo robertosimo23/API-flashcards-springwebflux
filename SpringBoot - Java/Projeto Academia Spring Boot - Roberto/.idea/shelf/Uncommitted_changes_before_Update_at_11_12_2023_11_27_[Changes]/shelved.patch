@@ -1,0 +1,2296 @@
+Index: Projeto-Academia-Spring-Boot/mvnw.cmd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/mvnw.cmd b/Projeto-Academia-Spring-Boot/mvnw.cmd
+new file mode 100644
+--- /dev/null	(date 1702300176203)
++++ b/Projeto-Academia-Spring-Boot/mvnw.cmd	(date 1702300176203)
+@@ -0,0 +1,205 @@
++@REM ----------------------------------------------------------------------------
++@REM Licensed to the Apache Software Foundation (ASF) under one
++@REM or more contributor license agreements.  See the NOTICE file
++@REM distributed with this work for additional information
++@REM regarding copyright ownership.  The ASF licenses this file
++@REM to you under the Apache License, Version 2.0 (the
++@REM "License"); you may not use this file except in compliance
++@REM with the License.  You may obtain a copy of the License at
++@REM
++@REM    https://www.apache.org/licenses/LICENSE-2.0
++@REM
++@REM Unless required by applicable law or agreed to in writing,
++@REM software distributed under the License is distributed on an
++@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++@REM KIND, either express or implied.  See the License for the
++@REM specific language governing permissions and limitations
++@REM under the License.
++@REM ----------------------------------------------------------------------------
++
++@REM ----------------------------------------------------------------------------
++@REM Apache Maven Wrapper startup batch script, version 3.2.0
++@REM
++@REM Required ENV vars:
++@REM JAVA_HOME - location of a JDK home dir
++@REM
++@REM Optional ENV vars
++@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
++@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
++@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
++@REM     e.g. to debug Maven itself, use
++@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++@REM ----------------------------------------------------------------------------
++
++@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
++@echo off
++@REM set title of command window
++title %0
++@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
++@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
++
++@REM set %HOME% to equivalent of $HOME
++if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
++
++@REM Execute a user defined script before this one
++if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
++@REM check for pre script, once with legacy .bat ending and once with .cmd ending
++if exist "%USERPROFILE%\mavenrc_pre.bat" call "%USERPROFILE%\mavenrc_pre.bat" %*
++if exist "%USERPROFILE%\mavenrc_pre.cmd" call "%USERPROFILE%\mavenrc_pre.cmd" %*
++:skipRcPre
++
++@setlocal
++
++set ERROR_CODE=0
++
++@REM To isolate internal variables from possible post scripts, we use another setlocal
++@setlocal
++
++@REM ==== START VALIDATION ====
++if not "%JAVA_HOME%" == "" goto OkJHome
++
++echo.
++echo Error: JAVA_HOME not found in your environment. >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++:OkJHome
++if exist "%JAVA_HOME%\bin\java.exe" goto init
++
++echo.
++echo Error: JAVA_HOME is set to an invalid directory. >&2
++echo JAVA_HOME = "%JAVA_HOME%" >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++@REM ==== END VALIDATION ====
++
++:init
++
++@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
++@REM Fallback to current working directory if not found.
++
++set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
++IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
++
++set EXEC_DIR=%CD%
++set WDIR=%EXEC_DIR%
++:findBaseDir
++IF EXIST "%WDIR%"\.mvn goto baseDirFound
++cd ..
++IF "%WDIR%"=="%CD%" goto baseDirNotFound
++set WDIR=%CD%
++goto findBaseDir
++
++:baseDirFound
++set MAVEN_PROJECTBASEDIR=%WDIR%
++cd "%EXEC_DIR%"
++goto endDetectBaseDir
++
++:baseDirNotFound
++set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
++cd "%EXEC_DIR%"
++
++:endDetectBaseDir
++
++IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
++
++@setlocal EnableExtensions EnableDelayedExpansion
++for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
++@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
++
++:endReadAdditionalConfig
++
++SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
++set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
++set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++set WRAPPER_URL="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
++
++FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
++    IF "%%A"=="wrapperUrl" SET WRAPPER_URL=%%B
++)
++
++@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
++@REM This allows using the maven wrapper in projects that prohibit checking in binary data.
++if exist %WRAPPER_JAR% (
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Found %WRAPPER_JAR%
++    )
++) else (
++    if not "%MVNW_REPOURL%" == "" (
++        SET WRAPPER_URL="%MVNW_REPOURL%/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
++    )
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Couldn't find %WRAPPER_JAR%, downloading it ...
++        echo Downloading from: %WRAPPER_URL%
++    )
++
++    powershell -Command "&{"^
++		"$webclient = new-object System.Net.WebClient;"^
++		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
++		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
++		"}"^
++		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%WRAPPER_URL%', '%WRAPPER_JAR%')"^
++		"}"
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Finished downloading %WRAPPER_JAR%
++    )
++)
++@REM End of extension
++
++@REM If specified, validate the SHA-256 sum of the Maven wrapper jar file
++SET WRAPPER_SHA_256_SUM=""
++FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
++    IF "%%A"=="wrapperSha256Sum" SET WRAPPER_SHA_256_SUM=%%B
++)
++IF NOT %WRAPPER_SHA_256_SUM%=="" (
++    powershell -Command "&{"^
++       "$hash = (Get-FileHash \"%WRAPPER_JAR%\" -Algorithm SHA256).Hash.ToLower();"^
++       "If('%WRAPPER_SHA_256_SUM%' -ne $hash){"^
++       "  Write-Output 'Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised.';"^
++       "  Write-Output 'Investigate or delete %WRAPPER_JAR% to attempt a clean download.';"^
++       "  Write-Output 'If you updated your Maven version, you need to update the specified wrapperSha256Sum property.';"^
++       "  exit 1;"^
++       "}"^
++       "}"
++    if ERRORLEVEL 1 goto error
++)
++
++@REM Provide a "standardized" way to retrieve the CLI args that will
++@REM work with both Windows and non-Windows executions.
++set MAVEN_CMD_LINE_ARGS=%*
++
++%MAVEN_JAVA_EXE% ^
++  %JVM_CONFIG_MAVEN_PROPS% ^
++  %MAVEN_OPTS% ^
++  %MAVEN_DEBUG_OPTS% ^
++  -classpath %WRAPPER_JAR% ^
++  "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" ^
++  %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
++if ERRORLEVEL 1 goto error
++goto end
++
++:error
++set ERROR_CODE=1
++
++:end
++@endlocal & set ERROR_CODE=%ERROR_CODE%
++
++if not "%MAVEN_SKIP_RC%"=="" goto skipRcPost
++@REM check for post script, once with legacy .bat ending and once with .cmd ending
++if exist "%USERPROFILE%\mavenrc_post.bat" call "%USERPROFILE%\mavenrc_post.bat"
++if exist "%USERPROFILE%\mavenrc_post.cmd" call "%USERPROFILE%\mavenrc_post.cmd"
++:skipRcPost
++
++@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
++if "%MAVEN_BATCH_PAUSE%"=="on" pause
++
++if "%MAVEN_TERMINATE_CMD%"=="on" exit %ERROR_CODE%
++
++cmd /C exit /B %ERROR_CODE%
+Index: Projeto-Academia-Spring-Boot/mvnw
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/mvnw b/Projeto-Academia-Spring-Boot/mvnw
+new file mode 100644
+--- /dev/null	(date 1702300176130)
++++ b/Projeto-Academia-Spring-Boot/mvnw	(date 1702300176130)
+@@ -0,0 +1,308 @@
++#!/bin/sh
++# ----------------------------------------------------------------------------
++# Licensed to the Apache Software Foundation (ASF) under one
++# or more contributor license agreements.  See the NOTICE file
++# distributed with this work for additional information
++# regarding copyright ownership.  The ASF licenses this file
++# to you under the Apache License, Version 2.0 (the
++# "License"); you may not use this file except in compliance
++# with the License.  You may obtain a copy of the License at
++#
++#    https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing,
++# software distributed under the License is distributed on an
++# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++# KIND, either express or implied.  See the License for the
++# specific language governing permissions and limitations
++# under the License.
++# ----------------------------------------------------------------------------
++
++# ----------------------------------------------------------------------------
++# Apache Maven Wrapper startup batch script, version 3.2.0
++#
++# Required ENV vars:
++# ------------------
++#   JAVA_HOME - location of a JDK home dir
++#
++# Optional ENV vars
++# -----------------
++#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
++#     e.g. to debug Maven itself, use
++#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++# ----------------------------------------------------------------------------
++
++if [ -z "$MAVEN_SKIP_RC" ] ; then
++
++  if [ -f /usr/local/etc/mavenrc ] ; then
++    . /usr/local/etc/mavenrc
++  fi
++
++  if [ -f /etc/mavenrc ] ; then
++    . /etc/mavenrc
++  fi
++
++  if [ -f "$HOME/.mavenrc" ] ; then
++    . "$HOME/.mavenrc"
++  fi
++
++fi
++
++# OS specific support.  $var _must_ be set to either true or false.
++cygwin=false;
++darwin=false;
++mingw=false
++case "$(uname)" in
++  CYGWIN*) cygwin=true ;;
++  MINGW*) mingw=true;;
++  Darwin*) darwin=true
++    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
++    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
++    if [ -z "$JAVA_HOME" ]; then
++      if [ -x "/usr/libexec/java_home" ]; then
++        JAVA_HOME="$(/usr/libexec/java_home)"; export JAVA_HOME
++      else
++        JAVA_HOME="/Library/Java/Home"; export JAVA_HOME
++      fi
++    fi
++    ;;
++esac
++
++if [ -z "$JAVA_HOME" ] ; then
++  if [ -r /etc/gentoo-release ] ; then
++    JAVA_HOME=$(java-config --jre-home)
++  fi
++fi
++
++# For Cygwin, ensure paths are in UNIX format before anything is touched
++if $cygwin ; then
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=$(cygpath --unix "$JAVA_HOME")
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=$(cygpath --path --unix "$CLASSPATH")
++fi
++
++# For Mingw, ensure paths are in UNIX format before anything is touched
++if $mingw ; then
++  [ -n "$JAVA_HOME" ] && [ -d "$JAVA_HOME" ] &&
++    JAVA_HOME="$(cd "$JAVA_HOME" || (echo "cannot cd into $JAVA_HOME."; exit 1); pwd)"
++fi
++
++if [ -z "$JAVA_HOME" ]; then
++  javaExecutable="$(which javac)"
++  if [ -n "$javaExecutable" ] && ! [ "$(expr "\"$javaExecutable\"" : '\([^ ]*\)')" = "no" ]; then
++    # readlink(1) is not available as standard on Solaris 10.
++    readLink=$(which readlink)
++    if [ ! "$(expr "$readLink" : '\([^ ]*\)')" = "no" ]; then
++      if $darwin ; then
++        javaHome="$(dirname "\"$javaExecutable\"")"
++        javaExecutable="$(cd "\"$javaHome\"" && pwd -P)/javac"
++      else
++        javaExecutable="$(readlink -f "\"$javaExecutable\"")"
++      fi
++      javaHome="$(dirname "\"$javaExecutable\"")"
++      javaHome=$(expr "$javaHome" : '\(.*\)/bin')
++      JAVA_HOME="$javaHome"
++      export JAVA_HOME
++    fi
++  fi
++fi
++
++if [ -z "$JAVACMD" ] ; then
++  if [ -n "$JAVA_HOME"  ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++      # IBM's JDK on AIX uses strange locations for the executables
++      JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++      JAVACMD="$JAVA_HOME/bin/java"
++    fi
++  else
++    JAVACMD="$(\unset -f command 2>/dev/null; \command -v java)"
++  fi
++fi
++
++if [ ! -x "$JAVACMD" ] ; then
++  echo "Error: JAVA_HOME is not defined correctly." >&2
++  echo "  We cannot execute $JAVACMD" >&2
++  exit 1
++fi
++
++if [ -z "$JAVA_HOME" ] ; then
++  echo "Warning: JAVA_HOME environment variable is not set."
++fi
++
++# traverses directory structure from process work directory to filesystem root
++# first directory with .mvn subdirectory is considered project base directory
++find_maven_basedir() {
++  if [ -z "$1" ]
++  then
++    echo "Path not specified to find_maven_basedir"
++    return 1
++  fi
++
++  basedir="$1"
++  wdir="$1"
++  while [ "$wdir" != '/' ] ; do
++    if [ -d "$wdir"/.mvn ] ; then
++      basedir=$wdir
++      break
++    fi
++    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
++    if [ -d "${wdir}" ]; then
++      wdir=$(cd "$wdir/.." || exit 1; pwd)
++    fi
++    # end of workaround
++  done
++  printf '%s' "$(cd "$basedir" || exit 1; pwd)"
++}
++
++# concatenates all lines of a file
++concat_lines() {
++  if [ -f "$1" ]; then
++    # Remove \r in case we run on Windows within Git Bash
++    # and check out the repository with auto CRLF management
++    # enabled. Otherwise, we may read lines that are delimited with
++    # \r\n and produce $'-Xarg\r' rather than -Xarg due to word
++    # splitting rules.
++    tr -s '\r\n' ' ' < "$1"
++  fi
++}
++
++log() {
++  if [ "$MVNW_VERBOSE" = true ]; then
++    printf '%s\n' "$1"
++  fi
++}
++
++BASE_DIR=$(find_maven_basedir "$(dirname "$0")")
++if [ -z "$BASE_DIR" ]; then
++  exit 1;
++fi
++
++MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}; export MAVEN_PROJECTBASEDIR
++log "$MAVEN_PROJECTBASEDIR"
++
++##########################################################################################
++# Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
++# This allows using the maven wrapper in projects that prohibit checking in binary data.
++##########################################################################################
++wrapperJarPath="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
++if [ -r "$wrapperJarPath" ]; then
++    log "Found $wrapperJarPath"
++else
++    log "Couldn't find $wrapperJarPath, downloading it ..."
++
++    if [ -n "$MVNW_REPOURL" ]; then
++      wrapperUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
++    else
++      wrapperUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar"
++    fi
++    while IFS="=" read -r key value; do
++      # Remove '\r' from value to allow usage on windows as IFS does not consider '\r' as a separator ( considers space, tab, new line ('\n'), and custom '=' )
++      safeValue=$(echo "$value" | tr -d '\r')
++      case "$key" in (wrapperUrl) wrapperUrl="$safeValue"; break ;;
++      esac
++    done < "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
++    log "Downloading from: $wrapperUrl"
++
++    if $cygwin; then
++      wrapperJarPath=$(cygpath --path --windows "$wrapperJarPath")
++    fi
++
++    if command -v wget > /dev/null; then
++        log "Found wget ... using wget"
++        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
++        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
++            wget $QUIET "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
++        else
++            wget $QUIET --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
++        fi
++    elif command -v curl > /dev/null; then
++        log "Found curl ... using curl"
++        [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
++        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
++            curl $QUIET -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
++        else
++            curl $QUIET --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
++        fi
++    else
++        log "Falling back to using Java to download"
++        javaSource="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.java"
++        javaClass="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/MavenWrapperDownloader.class"
++        # For Cygwin, switch paths to Windows format before running javac
++        if $cygwin; then
++          javaSource=$(cygpath --path --windows "$javaSource")
++          javaClass=$(cygpath --path --windows "$javaClass")
++        fi
++        if [ -e "$javaSource" ]; then
++            if [ ! -e "$javaClass" ]; then
++                log " - Compiling MavenWrapperDownloader.java ..."
++                ("$JAVA_HOME/bin/javac" "$javaSource")
++            fi
++            if [ -e "$javaClass" ]; then
++                log " - Running MavenWrapperDownloader.java ..."
++                ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$wrapperUrl" "$wrapperJarPath") || rm -f "$wrapperJarPath"
++            fi
++        fi
++    fi
++fi
++##########################################################################################
++# End of extension
++##########################################################################################
++
++# If specified, validate the SHA-256 sum of the Maven wrapper jar file
++wrapperSha256Sum=""
++while IFS="=" read -r key value; do
++  case "$key" in (wrapperSha256Sum) wrapperSha256Sum=$value; break ;;
++  esac
++done < "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
++if [ -n "$wrapperSha256Sum" ]; then
++  wrapperSha256Result=false
++  if command -v sha256sum > /dev/null; then
++    if echo "$wrapperSha256Sum  $wrapperJarPath" | sha256sum -c > /dev/null 2>&1; then
++      wrapperSha256Result=true
++    fi
++  elif command -v shasum > /dev/null; then
++    if echo "$wrapperSha256Sum  $wrapperJarPath" | shasum -a 256 -c > /dev/null 2>&1; then
++      wrapperSha256Result=true
++    fi
++  else
++    echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available."
++    echo "Please install either command, or disable validation by removing 'wrapperSha256Sum' from your maven-wrapper.properties."
++    exit 1
++  fi
++  if [ $wrapperSha256Result = false ]; then
++    echo "Error: Failed to validate Maven wrapper SHA-256, your Maven wrapper might be compromised." >&2
++    echo "Investigate or delete $wrapperJarPath to attempt a clean download." >&2
++    echo "If you updated your Maven version, you need to update the specified wrapperSha256Sum property." >&2
++    exit 1
++  fi
++fi
++
++MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
++
++# For Cygwin, switch paths to Windows format before running java
++if $cygwin; then
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=$(cygpath --path --windows "$JAVA_HOME")
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=$(cygpath --path --windows "$CLASSPATH")
++  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
++    MAVEN_PROJECTBASEDIR=$(cygpath --path --windows "$MAVEN_PROJECTBASEDIR")
++fi
++
++# Provide a "standardized" way to retrieve the CLI args that will
++# work with both Windows and non-Windows executions.
++MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $*"
++export MAVEN_CMD_LINE_ARGS
++
++WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++# shellcheck disable=SC2086 # safe args
++exec "$JAVACMD" \
++  $MAVEN_OPTS \
++  $MAVEN_DEBUG_OPTS \
++  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
++  "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
++  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.model;public class Cliente {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java	(date 1702250995724)
+@@ -1,2 +1,40 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.model;public class Cliente {
++package one.digitalinnovetion.labpadroesprojetoSpring.model;
++
++import jakarta.persistence.*;
++
++import javax.persistence.Entity;
++import javax.persistence.Id;
++
++@Entity
++public class Cliente {
++    @Id
++    @GeneratedValue(strategy = GenerationType.AUTO)
++    private Long id;
++    private String nome;
++    @ManyToOne
++    private Endereco endereco;
++
++    public Long getId() {
++        return id;
++    }
++
++    public void setId(Long id) {
++        this.id = id;
++    }
++
++    public String getNome() {
++        return nome;
++    }
++
++    public void setNome(String nome) {
++        this.nome = nome;
++    }
++
++    public Endereco getEndereco() {
++        return endereco;
++    }
++
++    public void setEndereco(Endereco endereco) {
++        this.endereco = endereco;
++    }
+ }
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.model;public class ClienteRepository {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java	(date 1702252380452)
+@@ -1,2 +1,10 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.model;public class ClienteRepository {
++package one.digitalinnovetion.labpadroesprojetoSpring.model;
++import org.springframework.data.repository.CrudRepository;
++
++import java.util.Optional;
++
++public interface ClienteRepository extends CrudRepository<Cliente, Long> {
++
++
++    Optional<Cliente> findAllById(Long id);
+ }
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.model;public class Endereco {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java	(date 1702247091138)
+@@ -1,2 +1,99 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.model;public class Endereco {
++package one.digitalinnovetion.labpadroesprojetoSpring.model;
++
++import jakarta.persistence.Entity;
++import jakarta.persistence.Id;
++
++@Entity
++public class Endereco {
++    @Id
++    private String cep;
++    private String lograduro;
++    private String complemento;
++    private String bairro;
++    private String localidade;
++    private String uf;
++    private String ibge;
++    private String gia;
++    private String ddd;
++    private String siafi;
++
++    public String getCep() {
++        return cep;
++    }
++
++    public void setCep(String cep) {
++        this.cep = cep;
++    }
++
++    public String getLograduro() {
++        return lograduro;
++    }
++
++    public void setLograduro(String lograduro) {
++        this.lograduro = lograduro;
++    }
++
++    public String getComplemento() {
++        return complemento;
++    }
++
++    public void setComplemento(String complemento) {
++        this.complemento = complemento;
++    }
++
++    public String getBairro() {
++        return bairro;
++    }
++
++    public void setBairro(String bairro) {
++        this.bairro = bairro;
++    }
++
++    public String getLocalidade() {
++        return localidade;
++    }
++
++    public void setLocalidade(String localidade) {
++        this.localidade = localidade;
++    }
++
++    public String getUf() {
++        return uf;
++    }
++
++    public void setUf(String uf) {
++        this.uf = uf;
++    }
++
++    public String getIbge() {
++        return ibge;
++    }
++
++    public void setIbge(String ibge) {
++        this.ibge = ibge;
++    }
++
++    public String getGia() {
++        return gia;
++    }
++
++    public void setGia(String gia) {
++        this.gia = gia;
++    }
++
++    public String getDdd() {
++        return ddd;
++    }
++
++    public void setDdd(String ddd) {
++        this.ddd = ddd;
++    }
++
++    public String getSiafi() {
++        return siafi;
++    }
++
++    public void setSiafi(String siafi) {
++        this.siafi = siafi;
++    }
+ }
+Index: Projeto-Academia-Spring-Boot/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/pom.xml b/Projeto-Academia-Spring-Boot/pom.xml
+new file mode 100644
+--- /dev/null	(date 1702300176082)
++++ b/Projeto-Academia-Spring-Boot/pom.xml	(date 1702300176082)
+@@ -0,0 +1,67 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>3.2.0</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>dio.innovationone</groupId>
++	<artifactId>Projeto-Academia-Spring-Boot</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>Projeto-Academia-Spring-Boot</name>
++	<description>Projeto Academia Roberto</description>
++	<properties>
++		<java.version>21</java.version>
++	</properties>
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-data-jpa</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-validation</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.postgresql</groupId>
++			<artifactId>postgresql</artifactId>
++			<scope>runtime</scope>
++		</dependency>
++		<dependency>
++			<groupId>org.projectlombok</groupId>
++			<artifactId>lombok</artifactId>
++			<optional>true</optional>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++				<configuration>
++					<excludes>
++						<exclude>
++							<groupId>org.projectlombok</groupId>
++							<artifactId>lombok</artifactId>
++						</exclude>
++					</excludes>
++				</configuration>
++			</plugin>
++		</plugins>
++	</build>
++
++</project>
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.service.impl;public class ClienteServiceImpl {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java	(date 1702253150209)
+@@ -1,2 +1,67 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.service.impl;public class ClienteServiceImpl {
++package one.digitalinnovetion.labpadroesprojetoSpring.service.impl;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.Cliente;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.ClienteRepository;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.Endereco;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.EnderecoRepository;
++import one.digitalinnovetion.labpadroesprojetoSpring.service.ClienteService;
++import one.digitalinnovetion.labpadroesprojetoSpring.service.ViaCepService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++
++import java.util.Optional;
++
++@Service
++public class ClienteServiceImpl implements ClienteService {
++
++    @Autowired
++    private ClienteRepository clienteRepository;
++    @Autowired
++    private EnderecoRepository enderecoRepository;
++    @Autowired
++    private ViaCepService viaCepService;
++
++    @Override
++    public Iterable<Cliente> buscarTodos() {
++        return clienteRepository.findAll();
++    }
++
++    @Override
++    public Cliente buscarPorId(Long id) {
++        Optional<Cliente> cliente = clienteRepository.findAllById(id);
++        return cliente.get();
++    }
++
++    @Override
++    public void inserir(Cliente cliente) {
++        SalvarClienteComCep(cliente);
++
++
++    }
++
++    private void SalvarClienteComCep(Cliente cliente) {
++        String cep= cliente.getEndereco().getCep();
++        Endereco endereco = enderecoRepository.findById(Long.valueOf(cep)).orElseGet(() ->{
++           Endereco novoEndereco = ViaCepService.consultarCep(cep);
++           enderecoRepository.save(novoEndereco);
++             return novoEndereco;
++         });
++        cliente.setEndereco(endereco);
++        clienteRepository.save(cliente);
++    }
++
++    @Override
++    public void atualizar(Long id, Cliente cliente) {
++        Optional<Cliente> clienteBd = clienteRepository.findById(id);
++        if (clienteBd.isPresent()){
++            SalvarClienteComCep(cliente);
++
++        }
++
++    }
++
++    @Override
++    public void deletar(Long id) {
++        clienteRepository.deleteById(id);
++
++    }
+ }
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.controller;public class ClienteRestController {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java	(date 1702248961914)
+@@ -1,2 +1,39 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.controller;public class ClienteRestController {
++package one.digitalinnovetion.labpadroesprojetoSpring.controller;
++import feign.Response;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.Cliente;
++import one.digitalinnovetion.labpadroesprojetoSpring.service.ClienteService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.http.ResponseEntity;
++import org.springframework.web.bind.annotation.*;
++
++
++@RestController
++@RequestMapping("clientes")
++public class ClienteRestController {
++    @Autowired
++    private ClienteService clienteService;
++
++    @GetMapping
++    public ResponseEntity<Iterable<Cliente>> buscarTodos(){
++        return ResponseEntity.ok(clienteService.buscarTodos());
++    }
++    @GetMapping("/{id}")
++    public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id){
++        return ResponseEntity.ok(clienteService.buscarPorId(id));
++    }
++   @PostMapping
++   public ResponseEntity<Cliente> inserir(@RequestBody Cliente cliente){
++        clienteService.inserir(cliente);
++        return ResponseEntity.ok(cliente);
++   }
++   @PutMapping("/{id}")
++    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente){
++        clienteService.atualizar(id,cliente);
++        return ResponseEntity.ok(cliente);
++   }
++   @DeleteMapping("/{id}")
++    public ResponseEntity<Void> deletar(@PathVariable Long id){
++        clienteService.deletar(id);
++        return ResponseEntity.ok().build();
++   }
+ }
+Index: Projeto-Academia-Spring-Boot/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/resources/application.yml b/Projeto-Academia-Spring-Boot/src/main/resources/application.yml
+new file mode 100644
+--- /dev/null	(date 1702307980843)
++++ b/Projeto-Academia-Spring-Boot/src/main/resources/application.yml	(date 1702307980843)
+@@ -0,0 +1,19 @@
++server.port: 8081
++
++spring:
++  datasource:
++    url: jdbc:postgresql://localhost:5432/academia?useTimezone=true&serverTimezone=UTC&useLegacyDate
++    username: cami
++    password: root
++  jpa:
++    show-sql: true
++    hibernate:
++      ddl-auto: update
++    properties:
++      hibernate.format_sql: true
++
++logging:
++  level:
++    org:
++      hibernate:
++        type: trace
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.model;public class EnderecoRepository {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java	(date 1702247495360)
+@@ -1,2 +1,10 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.model;public class EnderecoRepository {
++package one.digitalinnovetion.labpadroesprojetoSpring.model;
++import org.springframework.data.repository.CrudRepository;
++import org.springframework.stereotype.Repository;
++
++
++@Repository
++public interface EnderecoRepository extends CrudRepository<Cliente , Long> {
++
++
+ }
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.service;public class ClienteService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java	(date 1702247754541)
+@@ -1,2 +1,9 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.service;public class ClienteService {
++package one.digitalinnovetion.labpadroesprojetoSpring.service;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.Cliente;
++public interface ClienteService {
++    Iterable<Cliente> buscarTodos();
++    Cliente buscarPorId(Long id);
++    void inserir(Cliente cliente);
++    void atualizar(Long id, Cliente cliente);
++    void deletar(Long id);
+ }
+Index: ../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package one.digitalinnovetion.labpadroesprojetoSpring.service;public class ViaCepService {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java
+--- a/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java	(date 1702252558854)
+@@ -1,2 +1,13 @@
+-package one.digitalinnovetion.labpadroesprojetoSpring.service;public class ViaCepService {
++package one.digitalinnovetion.labpadroesprojetoSpring.service;
++import one.digitalinnovetion.labpadroesprojetoSpring.model.Endereco;
++import org.springframework.cloud.openfeign.FeignClient;
++import org.springframework.web.bind.annotation.PathVariable;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestMethod;
++
++@FeignClient(name = "Viacep", url = "https://viacep.com.br/ws")
++public interface ViaCepService {
++
++    @RequestMapping(method = RequestMethod.GET, value = "/{cep}/json/")
++    static Endereco consultarCep(@PathVariable("cep") String cep);
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1702301183720)
++++ b/.idea/misc.xml	(date 1702301183720)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1702301183760)
++++ b/.idea/encodings.xml	(date 1702301183760)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1702301183741)
++++ b/.idea/compiler.xml	(date 1702301183741)
+@@ -0,0 +1,18 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="Projeto-Academia-Spring-Boot" />
++      </profile>
++    </annotationProcessing>
++  </component>
++  <component name="JavacSettings">
++    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="Projeto-Academia-Spring-Boot" options="-parameters" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package DIO.springboot;public class MyApp {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java b/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java
+--- a/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java	(date 1702138562648)
+@@ -1,2 +1,17 @@
+-package DIO.springboot;public class MyApp {
++package DIO.springboot;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.CommandLineRunner;
++import org.springframework.stereotype.Component;
++
++@Component
++public class MyApp implements CommandLineRunner {
++
++    @Autowired
++    private Calculadora calculadora ;
++    @Override
++    public void run(String... args) throws Exception {
++        System.out.println("O resultado é: " + calculadora.somar(23,81));
++
++    }
+ }
+Index: Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.properties b/Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.properties
+new file mode 100644
+--- /dev/null	(date 1702300176569)
++++ b/Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.properties	(date 1702300176569)
+@@ -0,0 +1,2 @@
++distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.5/apache-maven-3.9.5-bin.zip
++wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar
+Index: ../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package DIO.springboot;public class Calculadora {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java b/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java
+--- a/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java	(date 1702138388535)
+@@ -1,2 +1,12 @@
+-package DIO.springboot;public class Calculadora {
++package DIO.springboot;
++
++
++import org.springframework.stereotype.Component;
++
++@Component
++public class Calculadora {
++    public int somar(int numero1, int numero2){
++        return numero1+numero2;
++    }
++
+ }
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1702301183675)
++++ b/.idea/modules.xml	(date 1702301183675)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Projeto Academia Spring Boot - Roberto.iml" filepath="$PROJECT_DIR$/.idea/Projeto Academia Spring Boot - Roberto.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/Projeto Academia Spring Boot - Roberto.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Projeto Academia Spring Boot - Roberto.iml b/.idea/Projeto Academia Spring Boot - Roberto.iml
+new file mode 100644
+--- /dev/null	(date 1702301183604)
++++ b/.idea/Projeto Academia Spring Boot - Roberto.iml	(date 1702301183604)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/AvaliacaoFisica.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/AvaliacaoFisica.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/AvaliacaoFisica.java
+new file mode 100644
+--- /dev/null	(date 1702305960615)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/AvaliacaoFisica.java	(date 1702305960615)
+@@ -0,0 +1,34 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.entity;
++
++import jakarta.persistence.*;
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++
++import java.time.LocalDateTime;
++
++
++@Data
++@NoArgsConstructor
++@AllArgsConstructor
++@Entity
++@Table(name = "tb_avaliacoes")
++
++public class AvaliacaoFisica {
++
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    private Long id;
++
++    @ManyToOne
++    @JoinColumn(name = "aluno_id")
++    private Aluno aluno;
++
++    private LocalDateTime dataDaAvaliacao = LocalDateTime.now();
++
++    @Column(name="peso_atual")
++    private double peso;
++
++    @Column(name="altura_atual")
++    private double altura;
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Aluno.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Aluno.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Aluno.java
+new file mode 100644
+--- /dev/null	(date 1702305960652)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Aluno.java	(date 1702305960652)
+@@ -0,0 +1,39 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.entity;
++
++import com.fasterxml.jackson.annotation.JsonIgnore;
++import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
++import jakarta.persistence.*;
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++
++import java.time.LocalDate;
++import java.util.ArrayList;
++import java.util.List;
++
++@Data
++@NoArgsConstructor
++@AllArgsConstructor
++@Entity
++@Table(name = "tb_alunos")
++@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
++
++public class Aluno {
++
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    private Long id;
++
++    private String nome;
++
++    @Column(unique = true)
++    private String cpf;
++
++    private String bairro;
++
++    private LocalDate dataDeNascimento;
++
++    @OneToMany(mappedBy = "aluno", cascade = CascadeType.REMOVE , fetch = FetchType.LAZY)
++    @JsonIgnore
++    private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
++}
+Index: Projeto-Academia-Spring-Boot/src/test/java/dio/innovationone/Projeto/Academia/Spring/Boot/ProjetoAcademiaSpringBootApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/test/java/dio/innovationone/Projeto/Academia/Spring/Boot/ProjetoAcademiaSpringBootApplicationTests.java b/Projeto-Academia-Spring-Boot/src/test/java/dio/innovationone/Projeto/Academia/Spring/Boot/ProjetoAcademiaSpringBootApplicationTests.java
+new file mode 100644
+--- /dev/null	(date 1702300176507)
++++ b/Projeto-Academia-Spring-Boot/src/test/java/dio/innovationone/Projeto/Academia/Spring/Boot/ProjetoAcademiaSpringBootApplicationTests.java	(date 1702300176507)
+@@ -0,0 +1,13 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class ProjetoAcademiaSpringBootApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AvaliacaoFisicaController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AvaliacaoFisicaController.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AvaliacaoFisicaController.java
+new file mode 100644
+--- /dev/null	(date 1702303984285)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AvaliacaoFisicaController.java	(date 1702303984285)
+@@ -0,0 +1,26 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.controller;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AvaliacaoFisicaForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.service.impl.AvaliacaoFisicaServiceImpl;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.web.bind.annotation.*;
++import java.util.List;
++@RestController
++@RequestMapping("/avaliacoes")
++
++public class AvaliacaoFisicaController {
++
++    @Autowired
++    private AvaliacaoFisicaServiceImpl service;
++
++    @PostMapping
++    public AvaliacaoFisica create(@RequestBody AvaliacaoFisicaForm form) {
++        return service.create(form);
++    }
++
++    @GetMapping
++    public List<AvaliacaoFisica> getAll(){
++        return service.getAll();
++    }
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/ProjetoAcademiaSpringBootApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/ProjetoAcademiaSpringBootApplication.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/ProjetoAcademiaSpringBootApplication.java
+new file mode 100644
+--- /dev/null	(date 1702301182488)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/ProjetoAcademiaSpringBootApplication.java	(date 1702301182488)
+@@ -0,0 +1,13 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class ProjetoAcademiaSpringBootApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(ProjetoAcademiaSpringBootApplication.class, args);
++	}
++
++}
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1702301183871)
++++ b/.idea/jarRepositories.xml	(date 1702301183871)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AlunoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AlunoController.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AlunoController.java
+new file mode 100644
+--- /dev/null	(date 1702307980878)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AlunoController.java	(date 1702307980878)
+@@ -0,0 +1,29 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.controller;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AlunoForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.service.impl.AlunoServiceImpl;
++import jakarta.validation.Valid;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.web.bind.annotation.*;
++import java.util.List;
++@RestController
++@RequestMapping ("/alunos")
++public class AlunoController {
++    @Autowired
++    private AlunoServiceImpl service;
++
++    @PostMapping
++    public Aluno create(@Valid @RequestBody AlunoForm form){
++        return service.create(form);
++    }
++    @GetMapping ("/avaliacoes/{id}")
++    public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(@PathVariable Long id){
++        return service.getAllAvaliacaoFisicaId(id);
++    }
++    @GetMapping
++    public List<Aluno> getAll(@RequestParam(value = "dataDeNAscimento" , required = false)String dataDeNascimento){
++        String dataDeNacimento = null;
++        return service.getAll(dataDeNacimento);
++    }
++}
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1702301183837)
++++ b/.idea/uiDesigner.xml	(date 1702301183837)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1702301185896)
++++ b/.idea/.gitignore	(date 1702301185896)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/MatriculaController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/MatriculaController.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/MatriculaController.java
+new file mode 100644
+--- /dev/null	(date 1702304561417)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/MatriculaController.java	(date 1702304561417)
+@@ -0,0 +1,28 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.controller;
++ import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Matricula;
++ import  dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.MatriculaForm;
++ import dio.innovationone.Projeto.Academia.Spring.Boot.service.impl.MatriculaServiceImpl;
++ import jakarta.validation.Valid;
++ import org.springframework.beans.factory.annotation.Autowired;
++ import org.springframework.web.bind.annotation.*;
++ import java.util.List;
++
++ @RestController
++ @RequestMapping("/matriculas")
++
++public class MatriculaController {
++
++     @Autowired
++     private MatriculaServiceImpl service;
++
++     @PostMapping
++     public Matricula create(@Valid @RequestBody MatriculaForm form) {
++         return service.create(form);
++     }
++
++     @GetMapping
++     public List<Matricula> getAll(@RequestParam(value = "bairro", required = false) String bairro) {
++         return service.getAll(bairro);
++     }
++
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1702301183969)
++++ b/.idea/vcs.xml	(date 1702301183969)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/misc.xml b/../.idea/misc.xml
+--- a/../.idea/misc.xml	(revision e7e2c487406b7e0223a15e7469f16fc24c4ae11b)
++++ b/../.idea/misc.xml	(date 1702136685971)
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="ProjectRootManager" version="2" project-jdk-name="21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/utils/JavaTimeUtils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/utils/JavaTimeUtils.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/utils/JavaTimeUtils.java
+new file mode 100644
+--- /dev/null	(date 1702305960624)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/utils/JavaTimeUtils.java	(date 1702305960624)
+@@ -0,0 +1,13 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils;
++
++import java.time.format.DateTimeFormatter;
++import java.util.Locale;
++
++public class JavaTimeUtils {
++    private JavaTimeUtils() {}
++
++    private  static final Locale LOCALE_BR = new Locale("pt", "BR");
++
++    public static final DateTimeFormatter LOCAL_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss", LOCALE_BR);
++    public static final DateTimeFormatter LOCAL_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy", LOCALE_BR);
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ObjectMapperConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ObjectMapperConfig.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ObjectMapperConfig.java
+new file mode 100644
+--- /dev/null	(date 1702305960551)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ObjectMapperConfig.java	(date 1702305960551)
+@@ -0,0 +1,24 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson;
++import com.fasterxml.jackson.databind.SerializationFeature;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.deser.LocalDateDeserializer;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.deser.LocalDateTimeDeserializer;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.ser.LocalDateSerializer;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.ser.LocalDateTimeSerializer;
++import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
++import java.time.LocalDate;
++import java.time.LocalDateTime;
++
++@Configuration
++public class ObjectMapperConfig implements Jackson2ObjectMapperBuilderCustomizer {
++
++    @Override
++    public void customize(Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder) {
++        jacksonObjectMapperBuilder.featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
++                .serializerByType(LocalDate.class, new LocalDateSerializer())
++                .serializerByType(LocalDateTime.class, new LocalDateTimeSerializer())
++                .deserializerByType(LocalDate.class, new LocalDateDeserializer())
++                .deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
++    }
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Matricula.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Matricula.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Matricula.java
+new file mode 100644
+--- /dev/null	(date 1702305960606)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Matricula.java	(date 1702305960606)
+@@ -0,0 +1,26 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.entity;
++
++import jakarta.persistence.*;
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++import java.time.LocalDateTime;
++
++@Data
++@NoArgsConstructor
++@AllArgsConstructor
++@Entity
++@Table(name = "tb_matriculas")
++public class Matricula {
++
++    @Id
++    @GeneratedValue(strategy = GenerationType.IDENTITY)
++    private Long id;
++
++    @OneToOne(cascade = CascadeType.ALL)
++    @JoinColumn(name = "aluno_id")
++    private Aluno aluno;
++
++    private LocalDateTime dataDaMatricula = LocalDateTime.now();
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateTimeSerializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateTimeSerializer.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateTimeSerializer.java
+new file mode 100644
+--- /dev/null	(date 1702308322032)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateTimeSerializer.java	(date 1702308322032)
+@@ -0,0 +1,27 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.ser;
++import com.fasterxml.jackson.core.JsonGenerator;
++import com.fasterxml.jackson.databind.SerializerProvider;
++import com.fasterxml.jackson.databind.ser.std.StdSerializer;
++import java.io.IOException;
++import java.time.LocalDate;
++import java.time.LocalDateTime;
++
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils;
++
++import static dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils.LOCAL_DATE_TIME_FORMATTER;
++
++public class LocalDateTimeSerializer extends StdSerializer<LocalDateTime> {
++
++    private static final long serialVersionUID = -6347158617481757931L;
++
++    public LocalDateTimeSerializer() {
++        super(LocalDateTime.class);
++    }
++
++    @Override
++    public void serialize(final LocalDateTime value, final JsonGenerator generator, final SerializerProvider provider) throws IOException {
++        generator.writeString(value.format(LOCAL_DATE_TIME_FORMATTER));
++    }
++
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateSerializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateSerializer.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateSerializer.java
+new file mode 100644
+--- /dev/null	(date 1702305960561)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateSerializer.java	(date 1702305960561)
+@@ -0,0 +1,22 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.ser;
++
++import com.fasterxml.jackson.core.JsonGenerator;
++import com.fasterxml.jackson.databind.SerializerProvider;
++import com.fasterxml.jackson.databind.ser.std.StdSerializer;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils;
++
++import java.time.LocalDate;
++import java.io.IOException;
++
++public class LocalDateSerializer extends StdSerializer<LocalDate> {
++    private static final long serialVersionUID = -2718386750062666481L;
++
++    public LocalDateSerializer() {
++        super(LocalDate.class);
++    }
++
++    @Override
++    public void serialize(final LocalDate value, final JsonGenerator generator, final SerializerProvider provider) throws IOException {
++        generator.writeString(value.format(JavaTimeUtils.LOCAL_DATE_FORMATTER));
++    }
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AvaliacaoFisicaRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AvaliacaoFisicaRepository.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AvaliacaoFisicaRepository.java
+new file mode 100644
+--- /dev/null	(date 1702306034722)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AvaliacaoFisicaRepository.java	(date 1702306034722)
+@@ -0,0 +1,9 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.repository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.stereotype.Repository;
++@Repository
++public interface AvaliacaoFisicaRepository extends JpaRepository<AvaliacaoFisica, Long>  {
++
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AlunoRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AlunoRepository.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AlunoRepository.java
+new file mode 100644
+--- /dev/null	(date 1702305960634)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AlunoRepository.java	(date 1702305960634)
+@@ -0,0 +1,13 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.repository;
++
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.stereotype.Repository;
++import java.time.LocalDate;
++import java.util.List;
++
++@Repository
++public interface AlunoRepository extends JpaRepository<Aluno, Long> {
++
++    List<Aluno> findByDataDeNascimento(LocalDate dataDeNascimento);
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/MatriculaRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/MatriculaRepository.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/MatriculaRepository.java
+new file mode 100644
+--- /dev/null	(date 1702306145890)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/MatriculaRepository.java	(date 1702306145890)
+@@ -0,0 +1,17 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.repository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Matricula;
++import org.springframework.data.jpa.repository.JpaRepository;
++import org.springframework.data.jpa.repository.Query;
++import org.springframework.stereotype.Repository;
++import java.util.List;
++
++@Repository
++public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
++
++    @Query(value = "SELECT * FROM tb_matriculas m " +
++            "INNER JOIN tb_alunos a ON m.aluno_id = a.id " +
++            "WHERE a.bairro = :bairro", nativeQuery = true)
++
++    List<Matricula> findAlunosMatriculadosBairro(String bairro);
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateDeserializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateDeserializer.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateDeserializer.java
+new file mode 100644
+--- /dev/null	(date 1702305960578)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateDeserializer.java	(date 1702305960578)
+@@ -0,0 +1,22 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.deser;
++import java.io.IOException;
++import java.time.LocalDate;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils;
++import com.fasterxml.jackson.core.JsonParser;
++import com.fasterxml.jackson.databind.DeserializationContext;
++import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
++
++public class LocalDateDeserializer extends  StdDeserializer<LocalDate>  {
++
++    private static final long serialVersionUID = -4589164298310392227L;
++
++    public LocalDateDeserializer() {
++        super(LocalDate.class);
++    }
++
++    @Override
++    public LocalDate deserialize(final JsonParser parser, final DeserializationContext context) throws IOException {
++        return LocalDate.parse(parser.readValueAs(String.class), JavaTimeUtils.LOCAL_DATE_FORMATTER);
++    }
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateTimeDeserializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateTimeDeserializer.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateTimeDeserializer.java
+new file mode 100644
+--- /dev/null	(date 1702305960643)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateTimeDeserializer.java	(date 1702305960643)
+@@ -0,0 +1,23 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.infra.jackson.deser;
++
++import com.fasterxml.jackson.core.JsonParser;
++import com.fasterxml.jackson.databind.DeserializationContext;
++import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils;
++
++import java.io.IOException;
++import java.time.LocalDateTime;
++public class LocalDateTimeDeserializer extends StdDeserializer<LocalDateTime> {
++
++    private static final long serialVersionUID = -7209271947629593913L;
++
++    public LocalDateTimeDeserializer() {
++        super(LocalDateTime.class);
++    }
++
++    @Override
++    public LocalDateTime deserialize(final JsonParser parser, final DeserializationContext context) throws IOException {
++        return LocalDateTime.parse(parser.readValueAs(String.class), JavaTimeUtils.LOCAL_DATE_TIME_FORMATTER);
++    }
++
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAlunoService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAlunoService.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAlunoService.java
+new file mode 100644
+--- /dev/null	(date 1702307438042)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAlunoService.java	(date 1702307438042)
+@@ -0,0 +1,24 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AlunoForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AlunoUpdateForm;
++import java.time.LocalDate;
++import java.util.List;
++public interface IAlunoService {
++
++    Aluno create(AlunoForm form);
++
++    Aluno get(Long id);
++
++    List<Aluno> getAll(String dataDeNascimento);
++
++
++    Aluno update(Long id, AlunoUpdateForm formUpdate);
++
++
++    void delete(Long id);
++
++
++    List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id);
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IMatriculaService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IMatriculaService.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IMatriculaService.java
+new file mode 100644
+--- /dev/null	(date 1702307437944)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IMatriculaService.java	(date 1702307437944)
+@@ -0,0 +1,18 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Matricula;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.MatriculaForm;
++import java.util.List;
++public interface IMatriculaService {
++
++
++    Matricula create(MatriculaForm form);
++
++
++    Matricula get(Long id);
++
++
++    List<Matricula> getAll(String bairro);
++
++
++    void delete(Long id);
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAvaliacaoFisicaService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAvaliacaoFisicaService.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAvaliacaoFisicaService.java
+new file mode 100644
+--- /dev/null	(date 1702307438026)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAvaliacaoFisicaService.java	(date 1702307438026)
+@@ -0,0 +1,23 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AvaliacaoFisicaForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AvaliacaoFisicaUpdateForm;
++import java.util.List;
++public interface IAvaliacaoFisicaService {
++
++
++
++    AvaliacaoFisica create(AvaliacaoFisicaForm form);
++
++
++    AvaliacaoFisica get(Long id);
++
++
++    List<AvaliacaoFisica> getAll();
++
++
++    AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate);
++
++
++    void delete(Long id);
++}
+Index: Projeto-Academia-Spring-Boot/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/.gitignore b/Projeto-Academia-Spring-Boot/.gitignore
+new file mode 100644
+--- /dev/null	(date 1702300176036)
++++ b/Projeto-Academia-Spring-Boot/.gitignore	(date 1702300176036)
+@@ -0,0 +1,33 @@
++HELP.md
++target/
++!.mvn/wrapper/maven-wrapper.jar
++!**/src/main/**/target/
++!**/src/test/**/target/
++
++### STS ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### IntelliJ IDEA ###
++.idea
++*.iws
++*.iml
++*.ipr
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++build/
++!**/src/main/**/build/
++!**/src/test/**/build/
++
++### VS Code ###
++.vscode/
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AlunoServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AlunoServiceImpl.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AlunoServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1702307437956)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AlunoServiceImpl.java	(date 1702307437956)
+@@ -0,0 +1,65 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service.impl;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AlunoForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AlunoUpdateForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.infra.utils.JavaTimeUtils;
++import dio.innovationone.Projeto.Academia.Spring.Boot.repository.AlunoRepository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.service.IAlunoService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++import java.time.LocalDate;
++import java.util.List;
++
++@Service
++public class AlunoServiceImpl implements IAlunoService {
++
++    @Autowired
++    private AlunoRepository repository;
++
++    @Override
++    public Aluno create(AlunoForm form) {
++        Aluno aluno = new Aluno();
++        aluno.setNome(form.getNome());
++        aluno.setCpf(form.getCpf());
++        aluno.setBairro(form.getBairro());
++        aluno.setDataDeNascimento(form.getDataDeNascimento());
++
++        return repository.save(aluno);
++    }
++
++    @Override
++    public Aluno get(Long id) {
++        return null;
++    }
++
++    @Override
++    public List<Aluno> getAll(String dataDeNascimento) {
++
++        if(dataDeNascimento == null) {
++            return repository.findAll();
++        } else {
++            LocalDate localDate = LocalDate.parse(dataDeNascimento, JavaTimeUtils.LOCAL_DATE_FORMATTER);
++            return repository.findByDataDeNascimento(localDate);
++        }
++
++    }
++
++    @Override
++    public Aluno update(Long id, AlunoUpdateForm formUpdate) {
++        return null;
++    }
++
++    @Override
++    public void delete(Long id) {
++    }
++
++    @Override
++    public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
++
++        Aluno aluno = repository.findById(id).get();
++
++        return aluno.getAvaliacoes();
++
++    }
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/MatriculaServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/MatriculaServiceImpl.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/MatriculaServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1702307438007)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/MatriculaServiceImpl.java	(date 1702307438007)
+@@ -0,0 +1,49 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service.impl;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Matricula;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.MatriculaForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.repository.AlunoRepository;
++import  dio.innovationone.Projeto.Academia.Spring.Boot.repository.MatriculaRepository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.service.IMatriculaService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++import java.util.List;
++
++@Service
++public class MatriculaServiceImpl implements IMatriculaService {
++
++    @Autowired
++    private MatriculaRepository matriculaRepository;
++
++    @Autowired
++    private AlunoRepository alunoRepository;
++
++    @Override
++    public Matricula create(MatriculaForm form) {
++        Matricula matricula = new Matricula();
++        Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
++
++        matricula.setAluno(aluno);
++
++        return matriculaRepository.save(matricula);
++    }
++
++    @Override
++    public Matricula get(Long id) {
++        return matriculaRepository.findById(id).get();
++    }
++
++    @Override
++    public List<Matricula> getAll(String bairro) {
++
++        if(bairro == null){
++            return matriculaRepository.findAll();
++        }else{
++            return matriculaRepository.findAlunosMatriculadosBairro(bairro);
++        }
++
++    }
++
++    @Override
++    public void delete(Long id) {}
++}
+Index: Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AvaliacaoFisicaServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AvaliacaoFisicaServiceImpl.java b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AvaliacaoFisicaServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1702307437932)
++++ b/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AvaliacaoFisicaServiceImpl.java	(date 1702307437932)
+@@ -0,0 +1,56 @@
++package dio.innovationone.Projeto.Academia.Spring.Boot.service.impl;
++
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AvaliacaoFisicaUpdateForm;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++import java.util.List;
++
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.Aluno;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.AvaliacaoFisica;
++import dio.innovationone.Projeto.Academia.Spring.Boot.entity.form.AvaliacaoFisicaForm;
++import dio.innovationone.Projeto.Academia.Spring.Boot.repository.AlunoRepository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.repository.AvaliacaoFisicaRepository;
++import dio.innovationone.Projeto.Academia.Spring.Boot.service.IAvaliacaoFisicaService;
++
++@Service
++public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
++
++    @Autowired
++    private AvaliacaoFisicaRepository avaliacaoFisicaRepository;
++
++    @Autowired
++    private AlunoRepository alunoRepository;
++
++    @Override
++    public AvaliacaoFisica create(AvaliacaoFisicaForm form) {
++        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
++        Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
++
++        avaliacaoFisica.setAluno(aluno);
++        avaliacaoFisica.setPeso(form.getPeso());
++        avaliacaoFisica.setAltura(form.getAltura());
++
++        return avaliacaoFisicaRepository.save(avaliacaoFisica);
++    }
++
++    @Override
++    public AvaliacaoFisica get(Long id) {
++        return null;
++    }
++
++    @Override
++    public List<AvaliacaoFisica> getAll() {
++
++        return avaliacaoFisicaRepository.findAll();
++    }
++
++    @Override
++    public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
++        return null;
++    }
++
++    @Override
++    public void delete(Long id) {
++
++    }
++}

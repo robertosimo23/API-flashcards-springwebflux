@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b5f905a-f3e0-4c87-afa7-e3a68092d52e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Certificados DIO/Dio - Projetos Praticos com Java e SpringBoot.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Projeto Academia Spring Boot - Roberto.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Projeto Academia Spring Boot - Roberto.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AlunoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/AvaliacaoFisicaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/controller/MatriculaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Aluno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/AvaliacaoFisica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/entity/Matricula.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ObjectMapperConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/deser/LocalDateTimeDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/jackson/ser/LocalDateTimeSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/infra/utils/JavaTimeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AlunoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/AvaliacaoFisicaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/repository/MatriculaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAlunoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IAvaliacaoFisicaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/IMatriculaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/ProjetoAcademiaSpringBootApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AlunoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/AvaliacaoFisicaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/java/dio/innovationone/Projeto/Academia/Spring/Boot/service/impl/MatriculaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto-Academia-Spring-Boot/src/test/java/dio/innovationone/Projeto/Academia/Spring/Boot/ProjetoAcademiaSpringBootApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/controller/ClienteRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/model/EnderecoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/ViaCepService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab-padroes-projetoSpring/lab-padroes-projetoSpring/src/main/java/one/digitalinnovetion/labpadroesprojetoSpring/service/impl/ClienteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java" beforeDir="false" afterPath="$PROJECT_DIR$/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/Calculadora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../primeiros-passos/primeiros-passos/src/main/java/DIO/springboot/MyApp.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2ZOjv1HBHgHZZePvSDe1OAskrbf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Socorro/Desktop/SpringBoot - Java/Projeto Academia Spring Boot - Roberto"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b5f905a-f3e0-4c87-afa7-e3a68092d52e" name="Changes" comment="" />
+      <created>1702300246291</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702300246291</updated>
+    </task>
+    <servers />
+  </component>
+</project>
