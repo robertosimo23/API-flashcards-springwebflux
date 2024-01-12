@@ -1,0 +1,37 @@
+server.Port=8090:
+server:
+  error:
+    include-stracktrace: on_trace_param
+spring:
+  application:
+    name: springboot2-essentials
+  datasource:
+    url: jdbc:mysql://localhost:3307/anime?createDatabaseIfNotExist=true
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+logging:
+  level:
+    org:
+      Hibernate:
+        SQL: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,metrics,prometheus
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    prometheus:
+      enabled : true
+
+info:
+  app: Spring Boot 2 Essentials by Robertosimo23
+  website: https://devdojo.academy
+  github: https://github.com/devdojo/springboot2-essentials
