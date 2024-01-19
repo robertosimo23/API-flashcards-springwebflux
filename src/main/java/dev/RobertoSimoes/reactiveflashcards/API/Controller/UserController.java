@@ -16,7 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Validated
 @RestController
-@RequestMapping
+@RequestMapping("users")
 @Slf4j
 @AllArgsConstructor
 public class UserController {

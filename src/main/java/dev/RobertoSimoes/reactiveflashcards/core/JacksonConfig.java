@@ -23,7 +23,7 @@ public class JacksonConfig {
                  .setSerializationInclusion(NON_NULL)
                  .configure(FAIL_ON_EMPTY_BEANS,false)
                  .configure(FAIL_ON_UNKNOWN_PROPERTIES,false)
-                 .configure(WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS,false)
+                 .configure(WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS,false);
      }
      @Bean
     Jackson2JsonEncoder jackson2JsonEncoder(final ObjectMapper objectMapper){
