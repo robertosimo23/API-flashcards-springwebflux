@@ -14,6 +14,8 @@ public class BasedErrorMessage {
     public static final BasedErrorMessage GENERIC_NOT_FOUND = new BasedErrorMessage(" generic.notFound");
     public static final BasedErrorMessage GENERIC_METHOD_NOT_ALLOW = new BasedErrorMessage(" generic.methodNotAllow");
 
+    public static final BasedErrorMessage GENERIC_BAD_REQUEST = new BasedErrorMessage("generic.badRequest");
+
    private final String key;
    private String[] params;
 
