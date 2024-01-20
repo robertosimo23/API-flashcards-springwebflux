@@ -23,7 +23,7 @@ public class BasedErrorMessage {
    }
    public String getMessage(){
        String message;
-       message = tryGetmMessageFromBundle();
+       message = tryGetMessageFromBundle();
        if (ArrayUtils.isNotEmpty(params)){
            final var fmt = new MessageFormat(message);
            message= fmt.format(params);
@@ -31,7 +31,7 @@ public class BasedErrorMessage {
        return message;
    }
 
-   private String tryGetmMessageFromBundle(){
+   private String tryGetMessageFromBundle(){
         return getResource().getString(key);
     }
     public ResourceBundle getResource (){
