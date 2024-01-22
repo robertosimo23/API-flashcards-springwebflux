@@ -16,6 +16,10 @@ public class BasedErrorMessage {
 
     public static final BasedErrorMessage GENERIC_BAD_REQUEST = new BasedErrorMessage("generic.badRequest");
 
+    public static final BasedErrorMessage USER_NOT_FOUND= new BasedErrorMessage("user.Not Found");
+
+
+
    private final String key;
    private String[] params;
 
