@@ -35,9 +35,17 @@ public class UserController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE, value = "{id}")
-    public Mono<UserResponse> findById(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id){
+    public Mono<UserResponse> findById(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id) {
         return userQueryService.findbyId(id)
-                .doFirst(()-> log.info("==== finding a user with a follow id{}",id))
-                .map(userMapper :: toResponse);
+                .doFirst(() -> log.info("==== finding a user with a follow id{}", id))
+                .map(userMapper::toResponse);
+    }
+
+    @PutMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE, value = "{id}")
+    public Mono<UserResponse> update(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id,
+                                     @Valid @RequestBody final UserRequest request) {
+        return userService.update(userMapper.toDocument(request, id))
+                .doFirst(() -> log.info("==== Updating a user with a follow info [body{}, id: {}", request, id))
+                .map(userMapper::toResponse);
     }
 }
