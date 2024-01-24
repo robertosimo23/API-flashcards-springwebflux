@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -28,6 +29,12 @@ public class DeckController {
 
     public final DeckMapper deckMapper;
 
+
+
+
+
+
+
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(CREATED)
     public Mono<DeckResponse> save(@Valid @RequestBody final DeckRequest request){
@@ -41,4 +48,11 @@ public class DeckController {
                 .doFirst(() -> log.info("==== Finding a deck with a follow id{}", id))
                 .map(deckMapper::toResponse);
     }
+    @GetMapping(produces = APPLICATION_JSON_VALUE )
+    public Flux<DeckResponse>findAll(){
+        return deckQueryService.findAll()
+                .doFirst(()-> log.info("==== Finding all decks"))
+                .map(deckMapper::toResponse);
+    }
+
 }
