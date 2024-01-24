@@ -16,7 +16,8 @@ public class BasedErrorMessage {
 
     public static final BasedErrorMessage GENERIC_BAD_REQUEST = new BasedErrorMessage("generic.badRequest");
 
-    public static final BasedErrorMessage USER_NOT_FOUND= new BasedErrorMessage("user.Not Found");
+    public static final BasedErrorMessage USER_NOT_FOUND= new BasedErrorMessage("user.NotFound");
+    public static final BasedErrorMessage DECK_NOT_FOUND= new BasedErrorMessage("deck.NotFound");
 
 
 

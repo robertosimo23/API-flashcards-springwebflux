@@ -27,14 +27,16 @@ public class UserService {
                         .updatedAt(user.updatedAt())
                         .build())
                 .flatMap(userRepository::save)
-                .doFirst(()-> log.info("==== Try do update a user with follow info {}", document));
+                .doFirst(() -> log.info("==== Try do update a user with follow info {}", document));
 
     }
+
     public Mono<Void> delete(final String id) {
         return userQueryService.findbyId(id)
                 .flatMap(userRepository::delete)
-                .doFirst(()-> log.info("=== Try to delete a user with follow id{}",id));
+                .doFirst(() -> log.info("=== Try to delete a user with follow id{}", id));
+
 
     }
 
-    }
+}

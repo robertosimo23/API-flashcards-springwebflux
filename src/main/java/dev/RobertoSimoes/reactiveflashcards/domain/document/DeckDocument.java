@@ -15,7 +15,7 @@ public record DeckDocument(@Id
                            String id,
                            String name,
                            String description,
-                           Set<StudyCard> cards,
+                           Set<Card> cards,
                            @CreatedDate
                            @Field("created_at")
                            OffsetDateTime createdAt,
