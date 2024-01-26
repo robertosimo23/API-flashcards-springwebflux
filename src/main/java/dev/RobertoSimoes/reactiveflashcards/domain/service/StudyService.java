@@ -3,8 +3,11 @@ package dev.RobertoSimoes.reactiveflashcards.domain.service;
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.StudyDomainMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.Card;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyDocument;
+import dev.RobertoSimoes.reactiveflashcards.domain.exception.DeckInStudyException;
+import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;
 import dev.RobertoSimoes.reactiveflashcards.domain.repository.StudyRepository;
 import dev.RobertoSimoes.reactiveflashcards.domain.service.query.DeckQueryService;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.query.StudyQueryService;
 import dev.RobertoSimoes.reactiveflashcards.domain.service.query.UserQueryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +17,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.Set;
 
+import static dev.RobertoSimoes.reactiveflashcards.domain.exception.BasedErrorMessage.DECK_IN_STUDY;
+
 @Service
 @Slf4j
 @AllArgsConstructor
@@ -21,13 +26,16 @@ public class StudyService {
 
     private final UserQueryService userQueryService;
     private final DeckQueryService deckQueryService;
+    private final StudyQueryService studyQueryService;
     private final StudyDomainMapper studyDomainMapper;
     private final StudyRepository studyRepository;
 
+
     public Mono<StudyDocument> star(final StudyDocument document) {
-        return userQueryService.findbyId(document.userId())
+        return verifyStudy(document)
+                .then(userQueryService.findbyId(document.userId()))
                 .flatMap(user -> deckQueryService.findById(document.studyDeck().deckId()))
-                .flatMap(deck -> getCards(document, deck.cards()))
+                .flatMap(deck -> fillDeckStudyCards(document, deck.cards()))
                 .map(study -> study.toBuilder().question(studyDomainMapper.gerenateRandomQuestion(study.studyDeck().cards()))
                         .build())
                 .doFirst(() -> log.info("==== generating a first random question "))
@@ -36,7 +44,7 @@ public class StudyService {
 
     }
 
-    public Mono<StudyDocument> getCards(final StudyDocument document, final Set<Card> cards) {
+    public Mono<StudyDocument> fillDeckStudyCards(final StudyDocument document, final Set<Card> cards) {
         return Flux.fromIterable(cards)
                 .doFirst(() -> log.info("==== copy cards to new study"))
                 .map(studyDomainMapper::toStudyCard)
@@ -44,6 +52,14 @@ public class StudyService {
                 .map(studyCards -> document.studyDeck().toBuilder().cards(Set.copyOf(studyCards)).build())
                 .map(studyDeck -> document.toBuilder().studyDeck(studyDeck).build());
 
+
+    }
+
+    private Mono<Void> verifyStudy(final StudyDocument document) {
+        return studyQueryService.findPendingStudyByUserIdAndDeckId(document.userId(), document.studyDeck().deckId())
+                .flatMap(study -> Mono.defer(() -> Mono.error(new DeckInStudyException(DECK_IN_STUDY.params(document.userId(), document.studyDeck().deckId().getMessage()))))
+                        .onErrorResume(NotFoundException.class, e -> Mono.empty())
+                        .then();
 
     }
 }

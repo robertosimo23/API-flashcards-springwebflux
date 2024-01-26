@@ -19,6 +19,9 @@ public class BasedErrorMessage {
     public static final BasedErrorMessage USER_NOT_FOUND= new BasedErrorMessage("user.NotFound");
     public static final BasedErrorMessage DECK_NOT_FOUND= new BasedErrorMessage("deck.NotFound");
     public static final BasedErrorMessage EMAIL_ALREADY_USED = new BasedErrorMessage("user.EmailAlreadyUsed");
+    public static final BasedErrorMessage STUDY_NOT_FOUND = new BasedErrorMessage("study.NotFound");
+    public static final BasedErrorMessage DECK_IN_STUDY = new BasedErrorMessage("study.DeckInsStudy");
+
 
 
 

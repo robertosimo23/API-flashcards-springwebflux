@@ -12,7 +12,10 @@ import java.time.OffsetDateTime;
 @Document(collection = "Users")
 public record UserDocument(@Id
                            String id,
+                           String userId,
                            String name,
+                           String studyDeck,
+                           String deckId,
                            String email,
                            @CreatedDate
                            @Field("created_at")

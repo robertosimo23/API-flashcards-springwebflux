@@ -17,7 +17,10 @@ import java.util.Objects;
 @Document(collection = "studies_decks")
 public record StudyDocument(@Id
                             String id,
+                            @Field("user_id")
                             String userId,
+                            Boolean complete,
+                            @Field("study_deck")
                             StudyDeck studyDeck,
                             List<Question> questions,
 
@@ -32,7 +35,7 @@ public record StudyDocument(@Id
         return new StudyDocumentBuilder();
     }
     public  StudyDocumentBuilder toBuilder(){
-        return new StudyDocumentBuilder(id,userId,studyDeck, questions,createdAt,updatedAt);
+        return new StudyDocumentBuilder(id,userId,complete,studyDeck, questions,createdAt,updatedAt);
     }
     public void addQuestion(final Question question) {
         questions.add(question);
@@ -49,6 +52,7 @@ public record StudyDocument(@Id
 
         private String id;
         private String userId;
+        private Boolean complete = false;
         private StudyDeck studyDeck;
         private List<Question> questions = new ArrayList<>();
         private OffsetDateTime createdAt;
@@ -66,6 +70,11 @@ public record StudyDocument(@Id
 
         public StudyDocumentBuilder userId(final String userId) {
             this.userId = userId;
+            return this;
+        }
+
+        public StudyDocumentBuilder complete(final Boolean complete) {
+            this.complete = true;
             return this;
         }
 
@@ -94,7 +103,7 @@ public record StudyDocument(@Id
         }
 
         public StudyDocument build (){
-            return new StudyDocument(id, userId,studyDeck, questions,createdAt,updatedAt);
+            return new StudyDocument(id, userId,complete,studyDeck, questions,createdAt,updatedAt);
         }
     }
 }
