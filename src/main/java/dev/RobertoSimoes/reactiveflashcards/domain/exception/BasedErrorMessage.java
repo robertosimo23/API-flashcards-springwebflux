@@ -19,14 +19,16 @@ public class BasedErrorMessage {
     public static final BasedErrorMessage USER_NOT_FOUND= new BasedErrorMessage("user.NotFound");
     public static final BasedErrorMessage DECK_NOT_FOUND= new BasedErrorMessage("deck.NotFound");
     public static final BasedErrorMessage EMAIL_ALREADY_USED = new BasedErrorMessage("user.EmailAlreadyUsed");
+    public static final BasedErrorMessage STUDY_DECK_NOT_FOUND = new BasedErrorMessage("studyDeck.NotFound");
+    public static final BasedErrorMessage DECK_IN_STUDY = new BasedErrorMessage("study.DeckInStudy");
     public static final BasedErrorMessage STUDY_NOT_FOUND = new BasedErrorMessage("study.NotFound");
-    public static final BasedErrorMessage DECK_IN_STUDY = new BasedErrorMessage("study.DeckInsStudy");
-
+    public static final BasedErrorMessage STUDY_QUESTION_NOT_FOUND = new BasedErrorMessage("studyQuestion.NotFound");
 
 
 
    private final String key;
    private String[] params;
+
 
    public  BasedErrorMessage params(final String... params){
        this.params = ArrayUtils.clone(params);
