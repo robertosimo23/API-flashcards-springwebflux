@@ -2,6 +2,8 @@ package dev.RobertoSimoes.reactiveflashcards.domain.service;
 
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.StudyDomainMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.Card;
+import dev.RobertoSimoes.reactiveflashcards.domain.document.Question;
+import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyCard;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.DeckInStudyException;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Set;
 
 import static dev.RobertoSimoes.reactiveflashcards.domain.exception.BasedErrorMessage.DECK_IN_STUDY;
@@ -62,4 +65,34 @@ public class StudyService {
                         .then();
 
     }
+
+    public Mono<StudyDocument> answer(final String id, String answer) {
+        studyQueryService.findById(id)
+                .flatMap(study -> studyQueryService.verifyIfFinished(study).thenReturn(study))
+                .map(study -> studyDomainMapper.answer(study, answer));
+        return Mono.just(StudyDocument.builder().build());
+    }
+
+    private Flux<String> getNotAnswer(Set<StudyCard> cards, List<Question> questions) {
+        return getCardAnswers(cards)
+                .filter(ask -> questions.stream()
+                        .filter(Question::isCorrect).map(Question::asked)
+                        .anyMatch(q -> q.equals(ask)));
+
+    }
+
+    private Flux<String> getCardAnswers(final Set<StudyCard> cards) {
+        return Flux.fromIterable(cards)
+                .map(StudyCard::front);
+
+    }
+
+    private Mono<List<String>> getAsked(final Set<Question> questions) {
+        return Flux.fromIterable(questions)
+                .filter(Question::isCorrect)
+                .map(Question::asked)
+                .collectList();
+    }
+}
+
 }
