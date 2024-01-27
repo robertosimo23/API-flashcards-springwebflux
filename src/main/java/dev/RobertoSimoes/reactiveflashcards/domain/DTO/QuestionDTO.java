@@ -1,29 +1,28 @@
-package dev.RobertoSimoes.reactiveflashcards.domain.document;
+package dev.RobertoSimoes.reactiveflashcards.domain.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-public record Question(String asked,
-                        @Field("asked_in")
-                       OffsetDateTime askedIn,
-                       String answered,
-                       @Field("answered_in")
-                       OffsetDateTime answeredIn,
-                       String expected) {
+public record QuestionDTO(String asked,
+
+                          OffsetDateTime askedIn,
+                          String answered,
+
+                          OffsetDateTime answeredIn,
+                          String expected) {
 
 
-    public Boolean isAnswered(){
+    public Boolean isAnswered() {
         return Objects.nonNull(answeredIn);
     }
 
-    public Boolean isCorrect(){
+    public Boolean isCorrect() {
         return isAnswered() && answered.equals(expected);
     }
+
     public static QuestionBuilder builder() {
         return new QuestionBuilder();
     }
@@ -69,8 +68,8 @@ public record Question(String asked,
         }
 
 
-        public Question build() {
-            return new Question(asked, askedIn, answered, answeredIn, expected);
+        public QuestionDTO build() {
+            return new QuestionDTO(asked, askedIn, answered, answeredIn, expected);
 
         }
     }
