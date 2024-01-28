@@ -4,6 +4,7 @@ import dev.RobertoSimoes.reactiveflashcards.domain.document.Question;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyDeck;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.time.OffsetDateTime;
@@ -15,9 +16,9 @@ public record StudyDTO(
         String id,
         String userId,
         Boolean complete,
-        StudyDeck studyDeck,
+        StudyDeckDTO studyDeck,
         List<QuestionDTO> questions,
-        List<String> remainAnswers,
+        List<String> remainAsks,
         OffsetDateTime createdAt,
         OffsetDateTime updatedAt) {
 
@@ -26,19 +27,14 @@ public record StudyDTO(
     }
 
     public StudyDocumentBuilder toBuilder() {
-        return new StudyDocumentBuilder(id, userId, studyDeck, questions, remainAnswers, createdAt, updatedAt);
+        return new StudyDocumentBuilder(id, userId, studyDeck, questions, remainAsks, createdAt, updatedAt);
     }
-
-    public void addQuestion(final Question question) {
-        questions.add(question);
-    }
-
 
     public Boolean hasAnyAnswer() {
-        return CollectionUtils.isNotEmpty(remainAnswers);
+        return CollectionUtils.isNotEmpty(remainAsks);
     }
 
-    @Builder(toBuilder = true)
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class StudyDocumentBuilder {
 
@@ -46,14 +42,11 @@ public record StudyDTO(
         private String id;
         private String userId;
         private StudyDeckDTO studyDeck;
-        private List<Question> questions = new ArrayList<>();
-        private List<String> remainAnswers;
+        private List<QuestionDTO> questions = new ArrayList<>();
+        private List<String> remainAsks = new ArrayList<>();
         private OffsetDateTime createdAt;
         private OffsetDateTime updatedAt;
 
-        public StudyDocumentBuilder() {
-
-        }
 
         public StudyDocumentBuilder id(final String id) {
             this.id = id;
@@ -67,7 +60,7 @@ public record StudyDTO(
         }
 
 
-        public StudyDocumentBuilder studyDeck(final StudyDeck studyDeck) {
+        public StudyDocumentBuilder studyDeck(final StudyDeckDTO studyDeck) {
             this.studyDeck = studyDeck;
             return this;
         }
@@ -77,8 +70,8 @@ public record StudyDTO(
             return this;
         }
 
-        public StudyDocumentBuilder remainAnswers(final List<String> remainAnswers) {
-            this.remainAnswers = remainAnswers;
+        public StudyDocumentBuilder remainAsks(final List<String> remainAsks) {
+            this.remainAsks = remainAsks;
             return this;
         }
 
@@ -99,8 +92,8 @@ public record StudyDTO(
 
         public StudyDTO build() {
             var rightQuestions = questions.stream().filter(QuestionDTO::isCorrect).toList();
-            var complete = rightQuestions.size() == studyDeck.cards.size();
-            return new StudyDTO(id, userId, complete, studyDeck, questions,remainAnswers, createdAt, updatedAt);
+            var complete = rightQuestions.size() == studyDeck.cards().size();
+            return new StudyDTO(id, userId, complete, studyDeck, questions, remainAsks, createdAt, updatedAt);
         }
     }
 }

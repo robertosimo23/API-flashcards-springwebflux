@@ -106,7 +106,7 @@ public record StudyDocument(@Id
 
         public StudyDocument build (){
             var rightQuestions = questions.stream().filter(Question::isCorrect).toList();
-            var complete =rightQuestions.size()== studyDeck.cards.size();
+            var complete =rightQuestions.size() == studyDeck.cards().size();
             return new StudyDocument(id, userId, complete ,studyDeck, questions,createdAt,updatedAt);
         }
     }

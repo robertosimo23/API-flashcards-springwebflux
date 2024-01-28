@@ -2,6 +2,7 @@ package dev.RobertoSimoes.reactiveflashcards.domain.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.OffsetDateTime;
 import java.util.Objects;
@@ -41,8 +42,10 @@ public record QuestionDTO(String asked,
         private String expected;
 
         public QuestionBuilder asked(final String asked) {
-            this.asked = asked;
-            this.askedIn = OffsetDateTime.now();
+            if (StringUtils.isNotBlank(asked)) {
+                this.asked = asked;
+                this.askedIn = OffsetDateTime.now();
+            }
             return this;
         }
 

@@ -1,9 +1,7 @@
 package dev.RobertoSimoes.reactiveflashcards.domain.DTO;
 
-import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyCard;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +10,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class StudyDeckDTO {
     private String Id;
-    private Set<StudyCard> cards;
+    private Set<StudyCardDTO> cards;
+
+    public Set<StudyCardDTO> cards(){
+        return this.cards;
+    }
 
     public static StudyDeckBuilder builder() {
         return new StudyDeckBuilder();

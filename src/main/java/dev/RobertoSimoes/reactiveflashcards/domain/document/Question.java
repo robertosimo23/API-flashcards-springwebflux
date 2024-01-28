@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 
 public record Question(String asked,
-                        @Field("asked_in")
+                       @Field("asked_in")
                        OffsetDateTime askedIn,
                        String answered,
                        @Field("answered_in")
@@ -17,13 +17,14 @@ public record Question(String asked,
                        String expected) {
 
 
-    public Boolean isAnswered(){
+    public Boolean isAnswered() {
         return Objects.nonNull(answeredIn);
     }
 
-    public Boolean isCorrect(){
+    public Boolean isCorrect() {
         return isAnswered() && answered.equals(expected);
     }
+
     public static QuestionBuilder builder() {
         return new QuestionBuilder();
     }
@@ -42,8 +43,11 @@ public record Question(String asked,
         private String expected;
 
         public QuestionBuilder asked(final String asked) {
-            this.asked = asked;
-            this.askedIn = OffsetDateTime.now();
+
+            if (StringUtils.isNotBlank(asked)) {
+                this.asked = asked;
+                this.askedIn = OffsetDateTime.now();
+            }
             return this;
         }
 
@@ -54,7 +58,10 @@ public record Question(String asked,
         }
 
         public QuestionBuilder answered(final String answered) {
-            this.answered = answered;
+            if ((StringUtils.isNotBlank(answered))) {
+                this.answered = answered;
+                this.answeredIn = OffsetDateTime.now();
+            }
             return this;
         }
 

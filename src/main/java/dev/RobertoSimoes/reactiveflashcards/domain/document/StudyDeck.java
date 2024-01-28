@@ -7,19 +7,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
-public class StudyDeck {
-    @Field("deck_id")
-    private String Id;
-    private Set<StudyCard> cards;
+
+public record StudyDeck(@Field("deck_id")
+                        String deckId,
+                        Set<StudyCard> cards) {
 
     public static StudyDeckBuilder builder() {
         return new StudyDeckBuilder();
     }
 
     public StudyDeckBuilder toBuilder() {
-        return new StudyDeckBuilder(Id, cards);
+        return new StudyDeckBuilder(deckId, cards);
     }
 
     @NoArgsConstructor
@@ -43,4 +41,3 @@ public class StudyDeck {
         }
     }
 }
-
