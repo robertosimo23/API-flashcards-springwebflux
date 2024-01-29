@@ -21,3 +21,12 @@ reactive-flashcards:
 retry-config:
   max-retries: 3
   min-duration: 1
+
+http-client:
+  response-timeout:
+  read-timeout:
+
+deck-api:
+  base-url: http://localhost:3030
+  auth-response: auth
+  decks-resource: decks

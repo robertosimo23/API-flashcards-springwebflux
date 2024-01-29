@@ -21,6 +21,7 @@ import java.util.UUID;
 @Service
 public class MailService {
 
+
     private final RetryHelper retryHelper;
     private final JavaMailSender mailSender;
     private final TemplateEngine templateEngine;
@@ -69,4 +70,5 @@ public class MailService {
                 .then();
 
     }
+
 }

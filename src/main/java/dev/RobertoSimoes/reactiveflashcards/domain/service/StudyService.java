@@ -3,6 +3,7 @@ package dev.RobertoSimoes.reactiveflashcards.domain.service;
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.StudyDomainMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.DTO.QuestionDTO;
 import dev.RobertoSimoes.reactiveflashcards.domain.DTO.StudyDTO;
+import dev.RobertoSimoes.reactiveflashcards.domain.Mapper.MailMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.Card;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.Question;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyCard;
@@ -33,11 +34,13 @@ import static dev.RobertoSimoes.reactiveflashcards.domain.exception.BasedErrorMe
 @AllArgsConstructor
 public class StudyService {
 
+    private final MailService mailService;
     private final UserQueryService userQueryService;
     private final DeckQueryService deckQueryService;
     private final StudyQueryService studyQueryService;
     private final StudyDomainMapper studyDomainMapper;
     private final StudyRepository studyRepository;
+    private final MailMapper mailMapper;
 
 
     public Mono<StudyDocument> star(final StudyDocument document) {
@@ -98,7 +101,7 @@ public class StudyService {
 
     private Mono<List<String>> removeLastAsk(List<String> asks, String asked) {
         return Mono.just(asks)
-                .doFirst(()-> log.info("==== remove last asked question if it is not a last pending question study"))
+                .doFirst(() -> log.info("==== remove last asked question if it is not a last pending question study"))
                 .filter(a -> a.size() == 1)
                 .switchIfEmpty(Mono.defer(() -> Mono.just(asks.stream()
                         .filter(a -> a.equals(asked))
@@ -121,12 +124,14 @@ public class StudyService {
                         .getMessage()))))
                 .flatMap(hasAnyAnswer -> generateNextQuestions(dto))
                 .map(question -> dto.toBuilder().question(question).build())
-                .onErrorResume(NotFoundException.class, e -> Mono.just(dto));
+                .onErrorResume(NotFoundException.class, e -> Mono.just(dto)
+                        .onTerminateDetach()
+                        .doOnSuccess(this::notifyUser));
     }
 
     private Mono<QuestionDTO> generateNextQuestions(final StudyDTO dto) {
         return Mono.just(dto.remainAsks().get(new Random().nextInt(dto.remainAsks().size())))
-                .doFirst(()-> log.info("==== select next random question"))
+                .doFirst(() -> log.info("==== select next random question"))
                 .map(ask -> dto.studyDeck()
                         .cards()
                         .stream()
@@ -135,6 +140,15 @@ public class StudyService {
                         .findFirst()
                         .orElseThrow());
 
+
+    }
+
+    private void notifyUser(final StudyDTO dto) {
+        userQueryService.findbyId(dto.userId())
+                .zipWhen(user -> deckQueryService.findById(dto.studyDeck().deckId()))
+                .map(tuple -> mailMapper.toDTO(dto, tuple.getT2(), tuple.getT1()))
+                .flatMap(mailService::send)
+                .subscribe();
 
     }
 }
