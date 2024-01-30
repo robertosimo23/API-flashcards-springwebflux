@@ -24,7 +24,7 @@ public class WebClientConfig {
     }
     @Bean
     ClientHttpConnector clientHttpConnector(final HttpClient httpClient){
-        return new ReactorClientHttpConnector(httpClient)
+        return new ReactorClientHttpConnector(httpClient);
     }
     @Bean
     HttpClient httpClient(@Value("${http-client.response-timeout}") final Long responseTimeout,
@@ -32,6 +32,6 @@ public class WebClientConfig {
         return HttpClient.create()
                 .responseTimeout(Duration.ofMillis(responseTimeout))
                 .doOnConnected(connection ->
-                        connection.addHandlerLast(new ReadTimeoutHandler(, TimeUnit.MILLISECONDS)));
+                        connection.addHandlerLast(new ReadTimeoutHandler(readTimeout, TimeUnit.MILLISECONDS)));
     }
 }
