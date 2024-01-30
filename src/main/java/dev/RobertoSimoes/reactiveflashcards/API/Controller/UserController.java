@@ -37,7 +37,7 @@ public class UserController {
 
     @GetMapping(produces = APPLICATION_JSON_VALUE, value = "{id}")
     public Mono<UserResponse> findById(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id) {
-        return userQueryService.findbyId(id)
+        return userQueryService.findById(id)
                 .doFirst(() -> log.info("==== Finding a user with a follow id{}", id))
                 .map(userMapper::toResponse);
     }
