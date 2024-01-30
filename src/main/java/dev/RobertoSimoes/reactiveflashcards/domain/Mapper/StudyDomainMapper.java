@@ -1,4 +1,4 @@
-package dev.RobertoSimoes.reactiveflashcards.API.Mapper;
+package dev.RobertoSimoes.reactiveflashcards.domain.Mapper;
 
 import dev.RobertoSimoes.reactiveflashcards.domain.DTO.QuestionDTO;
 import dev.RobertoSimoes.reactiveflashcards.domain.DTO.StudyCardDTO;
@@ -20,34 +20,40 @@ public interface StudyDomainMapper {
 
     StudyCard toStudyCard(final Card cards);
 
-    default Question gerenateRandomQuestion(final Set<StudyCard> cards) {
+    default Question generateRandomQuestion(final Set<StudyCard> cards){
         var values = new ArrayList<>(cards);
         var random = new Random();
         var position = random.nextInt(values.size());
         return toQuestion(values.get(position));
-
     }
 
+    @Mapping(target = "askedIn", ignore = true)
+    @Mapping(target = "answeredIn", ignore = true)
     @Mapping(target = "asked", source = "front")
     @Mapping(target = "answered", ignore = true)
     @Mapping(target = "expected", source = "back")
     Question toQuestion(final StudyCard card);
 
+    @Mapping(target = "askedIn", ignore = true)
+    @Mapping(target = "answeredIn", ignore = true)
     @Mapping(target = "asked", source = "front")
     @Mapping(target = "answered", ignore = true)
     @Mapping(target = "expected", source = "back")
     QuestionDTO toQuestion(final StudyCardDTO card);
 
-    default StudyDocument answer(final StudyDocument document,final String answer){
+    default StudyDocument answer(final StudyDocument document, final String answer){
         var currentQuestion = document.getLastPendingQuestion();
         var questions = document.questions();
         var curIndexQuestion = questions.indexOf(currentQuestion);
         currentQuestion = currentQuestion.toBuilder().answered(answer).build();
-        questions.set(curIndexQuestion,currentQuestion);
+        questions.set(curIndexQuestion, currentQuestion);
         return document.toBuilder().questions(questions).build();
     }
-    @Mapping(target = " question", ignore = true)
-    StudyDTO toDTO(final StudyDocument document, final List<String> remainAsks );
-    @Mapping(target = " question", ignore = true)
+
+    @Mapping(target = "question", ignore = true)
+    StudyDTO toDTO(final StudyDocument document, final List<String> remainAsks);
+
+    @Mapping(target = "question", ignore = true)
     StudyDocument toDocument(final StudyDTO dto);
+
 }

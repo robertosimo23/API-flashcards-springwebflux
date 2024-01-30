@@ -16,6 +16,8 @@ services:
       - box:/box
     depends_on:
       - db
+    networks:
+      - reactive-net
   db:
     image: mongo:5.0.9
     environment:
@@ -24,6 +26,8 @@ services:
       MONGO_INITDB_DATABASE: reactive-flashcards
     ports:
       - "27017:27017"
+    networks:
+      - reactive-net
   box:
     image: busybox
     volumes:
@@ -33,6 +37,11 @@ services:
     ports:
       - "1025:25"
       - "1080:80"
+    networks:
+      - reactive-net
+networks:
+    reactive-net:
+        name: custom-net
 volumes:
   db:
   box:

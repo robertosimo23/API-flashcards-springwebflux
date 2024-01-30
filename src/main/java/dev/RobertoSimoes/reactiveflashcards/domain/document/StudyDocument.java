@@ -2,6 +2,7 @@ package dev.RobertoSimoes.reactiveflashcards.domain.document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Document(collection = "studies_decks")
+@Document(collection = "studies")
 public record StudyDocument(@Id
                             String id,
                             @Field("user_id")
@@ -24,37 +25,35 @@ public record StudyDocument(@Id
                             @Field("study_deck")
                             StudyDeck studyDeck,
                             List<Question> questions,
-
                             @CreatedDate
                             @Field("created_at")
                             OffsetDateTime createdAt,
                             @LastModifiedDate
-                            @Field("update_at")
+                            @Field("updated_at")
                             OffsetDateTime updatedAt) {
 
-    public static StudyDocumentBuilder builder(){
+    public static StudyDocumentBuilder builder() {
         return new StudyDocumentBuilder();
     }
-    public  StudyDocumentBuilder toBuilder(){
-        return new StudyDocumentBuilder(id,userId,studyDeck, questions,createdAt,updatedAt);
-    }
-    public void addQuestion(final Question question) {
-        questions.add(question);
-    }
 
+    public StudyDocumentBuilder toBuilder() {
+        return new StudyDocumentBuilder(id, userId, studyDeck, questions, createdAt, updatedAt);
+    }
 
     public Question getLastPendingQuestion() {
         return questions.stream().filter(q -> Objects.isNull(q.answeredIn())).findFirst().orElseThrow();
     }
-    public Question getLastAnsweredQuestions(){
-        return questions.stream().filter(q -> Objects.nonNull(q.answeredIn()))
+
+    public Question getLastAnsweredQuestions() {
+        return questions.stream()
+                .filter(q -> Objects.nonNull(q.answeredIn()))
                 .max(Comparator.comparing(Question::answeredIn))
                 .orElseThrow();
     }
-    @Builder(toBuilder = true)
+
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class StudyDocumentBuilder {
-
 
         private String id;
         private String userId;
@@ -63,21 +62,15 @@ public record StudyDocument(@Id
         private OffsetDateTime createdAt;
         private OffsetDateTime updatedAt;
 
-        public StudyDocumentBuilder() {
-
-        }
-
         public StudyDocumentBuilder id(final String id) {
             this.id = id;
             return this;
-
         }
 
         public StudyDocumentBuilder userId(final String userId) {
             this.userId = userId;
             return this;
         }
-
 
 
         public StudyDocumentBuilder studyDeck(final StudyDeck studyDeck) {
@@ -89,6 +82,7 @@ public record StudyDocument(@Id
             this.questions = questions;
             return this;
         }
+
         public StudyDocumentBuilder question(final Question question) {
             this.questions.add(question);
             return this;
@@ -104,11 +98,12 @@ public record StudyDocument(@Id
             return this;
         }
 
-        public StudyDocument build (){
+        public StudyDocument build() {
             var rightQuestions = questions.stream().filter(Question::isCorrect).toList();
-            var complete =rightQuestions.size() == studyDeck.cards().size();
-            return new StudyDocument(id, userId, complete ,studyDeck, questions,createdAt,updatedAt);
+            var complete = rightQuestions.size() == studyDeck.cards().size();
+            return new StudyDocument(id, userId, complete, studyDeck, questions, createdAt, updatedAt);
         }
+
     }
 }
 

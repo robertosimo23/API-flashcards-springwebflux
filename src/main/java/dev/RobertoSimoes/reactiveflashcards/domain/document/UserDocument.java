@@ -9,13 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.OffsetDateTime;
 
-@Document(collection = "Users")
+@Document(collection = "users")
 public record UserDocument(@Id
                            String id,
-                           String userId,
                            String name,
-                           String studyDeck,
-                           String deckId,
                            String email,
                            @CreatedDate
                            @Field("created_at")
@@ -24,6 +21,5 @@ public record UserDocument(@Id
                            @Field("update_at")
                            OffsetDateTime updatedAt) {
     @Builder(toBuilder = true)
-    public UserDocument {
-    }
+    public UserDocument { }
 }
