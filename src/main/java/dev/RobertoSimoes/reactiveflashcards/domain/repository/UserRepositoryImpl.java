@@ -23,8 +23,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 public class UserRepositoryImpl {
     public ReactiveMongoTemplate template;
 
-
-    public Flux<UserDocument> findOnDemand(final UserPageRequest request){
+    public Flux<UserDocument> findOnDemand(final UserPageRequest request) {
         return Mono.just(new Query())
                 .flatMap(query -> buildWhere(query, request.sentence()))
                 .map(query -> query.with(request.getSort()).skip(request.getSkip()).limit(request.limit()))
@@ -32,14 +31,14 @@ public class UserRepositoryImpl {
                 .flatMapMany(query -> template.find(query, UserDocument.class));
     }
 
-    public Mono<Long> count(final UserPageRequest request){
+    public Mono<Long> count(final UserPageRequest request) {
         return Mono.just(new Query())
                 .flatMap(query -> buildWhere(query, request.sentence()))
                 .doFirst(() -> log.info("==== Counting users with follow request {}", request))
                 .flatMap(query -> template.count(query, UserDocument.class));
     }
 
-    private Mono<Query> buildWhere(final Query query, final String sentence){
+    private Mono<Query> buildWhere(final Query query, final String sentence) {
         return Mono.just(query)
                 .filter(q -> StringUtils.isBlank(sentence))
                 .switchIfEmpty(Mono.defer(() -> Mono.just(query))

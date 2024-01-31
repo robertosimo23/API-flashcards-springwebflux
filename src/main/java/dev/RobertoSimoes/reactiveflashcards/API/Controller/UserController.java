@@ -1,6 +1,8 @@
 package dev.RobertoSimoes.reactiveflashcards.API.Controller;
 
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.request.UserPageRequest;
 import dev.RobertoSimoes.reactiveflashcards.API.Controller.request.UserRequest;
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.UserPageResponse;
 import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.UserResponse;
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.UserMapper;
 import dev.RobertoSimoes.reactiveflashcards.core.validation.MongoId;
@@ -42,6 +44,13 @@ public class UserController {
                 .map(userMapper::toResponse);
     }
 
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
+    public Mono<UserPageResponse> findOnDemand(@Valid final UserPageRequest request) {
+        return userQueryService.findOnDemand(request)
+                .doFirst(() -> log.info("==== Finding users on demand with follow request {}", request))
+                .map(page-> userMapper.toResponse(page, request.limit()));
+    }
+
     @PutMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE, value = "{id}")
     public Mono<UserResponse> update(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id,
                                      @Valid @RequestBody final UserRequest request) {
@@ -49,10 +58,11 @@ public class UserController {
                 .doFirst(() -> log.info("==== Updating a user with a follow info [body{}, id: {}", request, id))
                 .map(userMapper::toResponse);
     }
+
     @DeleteMapping(value = "{id}")
     @ResponseStatus(NO_CONTENT)
-            public Mono<Void> delete(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id){
+    public Mono<Void> delete(@PathVariable @Valid @MongoId(message = "{userController.id}") final String id) {
         return userService.delete(id)
-                .doFirst(( ) -> log.info("=== Deleting a user with a follow id{}", id));
+                .doFirst(() -> log.info("=== Deleting a user with a follow id{}", id));
     }
 }

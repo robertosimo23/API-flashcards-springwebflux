@@ -1,7 +1,9 @@
 package dev.RobertoSimoes.reactiveflashcards.API.Mapper;
 
 import dev.RobertoSimoes.reactiveflashcards.API.Controller.request.UserRequest;
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.UserPageResponse;
 import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.UserResponse;
+import dev.RobertoSimoes.reactiveflashcards.domain.DTO.UserPageDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.UserDocument;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,4 +23,5 @@ public interface UserMapper  {
 
     UserResponse toResponse(final UserDocument document);
 
+    UserPageResponse toResponse(final UserPageDocument document, final Integer limit);
 }
