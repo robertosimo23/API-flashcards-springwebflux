@@ -1,4 +1,4 @@
-package dev.RobertoSimoes.reactiveflashcards.domain.service.query;
+package dev.RobertoSimoes.reactiveflashcards.domain.service;
 
 import dev.RobertoSimoes.reactiveflashcards.API.Controller.request.UserPageRequest;
 import dev.RobertoSimoes.reactiveflashcards.domain.DTO.UserPageDocument;

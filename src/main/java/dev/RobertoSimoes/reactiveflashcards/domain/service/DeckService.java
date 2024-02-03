@@ -3,8 +3,6 @@ package dev.RobertoSimoes.reactiveflashcards.domain.service;
 import dev.RobertoSimoes.reactiveflashcards.domain.Mapper.DeckDoMainMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.DeckDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.repository.DeckRepository;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.DeckQueryService;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.DeckRestQueryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -8,7 +8,7 @@ import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.QuestionResp
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.StudyMapper;
 import dev.RobertoSimoes.reactiveflashcards.core.validation.MongoId;
 import dev.RobertoSimoes.reactiveflashcards.domain.service.StudyService;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.StudyQueryService;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.StudyQueryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

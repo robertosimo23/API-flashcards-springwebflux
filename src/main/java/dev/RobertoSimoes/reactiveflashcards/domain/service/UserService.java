@@ -4,7 +4,6 @@ import dev.RobertoSimoes.reactiveflashcards.domain.document.UserDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.EmailAlreadyUsedException;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;
 import dev.RobertoSimoes.reactiveflashcards.domain.repository.UserRepository;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.UserQueryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

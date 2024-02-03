@@ -11,6 +11,7 @@ services:
       - "5005:5005"
     environment:
       GRADLE_USER_HOME: /box
+      SPRING_PROFILES_ACTIVE: test
     volumes:
       - .:/reactive-flashcards
       - box:/box

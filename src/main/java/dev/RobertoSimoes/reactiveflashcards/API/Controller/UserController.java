@@ -8,7 +8,10 @@ import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.UserResponse
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.UserMapper;
 import dev.RobertoSimoes.reactiveflashcards.core.validation.MongoId;
 import dev.RobertoSimoes.reactiveflashcards.domain.service.UserService;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.UserQueryService;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.UserQueryService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

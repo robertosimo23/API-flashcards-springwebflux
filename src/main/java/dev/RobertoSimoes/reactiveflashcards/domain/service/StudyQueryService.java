@@ -1,4 +1,4 @@
-package dev.RobertoSimoes.reactiveflashcards.domain.service.query;
+package dev.RobertoSimoes.reactiveflashcards.domain.service;
 
 import dev.RobertoSimoes.reactiveflashcards.domain.document.Question;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.StudyDocument;

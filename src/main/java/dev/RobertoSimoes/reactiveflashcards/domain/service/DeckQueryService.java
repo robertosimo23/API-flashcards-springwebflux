@@ -1,4 +1,4 @@
-package dev.RobertoSimoes.reactiveflashcards.domain.service.query;
+package dev.RobertoSimoes.reactiveflashcards.domain.service;
 
 import dev.RobertoSimoes.reactiveflashcards.domain.document.DeckDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;

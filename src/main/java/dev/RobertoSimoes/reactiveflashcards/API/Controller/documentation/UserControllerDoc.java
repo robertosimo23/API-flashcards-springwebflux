@@ -40,7 +40,7 @@ public interface UserControllerDoc {
 
     @Operation(summary = "Endpoint para buscar usuários de forma paginada")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "retornar os usuários de acordo com as informações passadas na request",
+            @ApiResponse(responseCode = "200", description = "retornar os usuários de acordo com as informações passadas na request",
                     content = {@Content(mediaType = "application/json",schema = @Schema(implementation = UserPageResponse.class))})})
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     Mono<UserPageResponse> findOnDemand(@Valid UserPageRequest request);

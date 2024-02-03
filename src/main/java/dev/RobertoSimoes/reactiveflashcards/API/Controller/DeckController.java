@@ -6,7 +6,7 @@ import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.DeckResponse
 import dev.RobertoSimoes.reactiveflashcards.API.Mapper.DeckMapper;
 import dev.RobertoSimoes.reactiveflashcards.core.validation.MongoId;
 import dev.RobertoSimoes.reactiveflashcards.domain.service.DeckService;
-import dev.RobertoSimoes.reactiveflashcards.domain.service.query.DeckQueryService;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.DeckQueryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
