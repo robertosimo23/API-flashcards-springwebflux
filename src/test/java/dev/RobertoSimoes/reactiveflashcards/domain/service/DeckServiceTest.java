@@ -1,6 +1,7 @@
 package dev.RobertoSimoes.reactiveflashcards.domain.service;
 
 import dev.RobertoSimoes.reactiveflashcards.core.factorybot.document.DeckDocumentFactoryBot;
+import dev.RobertoSimoes.reactiveflashcards.core.factorybot.dto.DeckDTOFactoryBot;
 import dev.RobertoSimoes.reactiveflashcards.domain.Mapper.DeckDoMainMapper;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.DeckDocument;
 import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;
@@ -13,11 +14,15 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.OffsetDateTime;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
+import static dev.RobertoSimoes.reactiveflashcards.core.factorybot.RandomData.getFaker;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -131,4 +136,31 @@ public class DeckServiceTest {
         verifyNoInteractions(deckRestQueryService);
 
     }
+
+    @Test
+    void syncTest() throws InterruptedException {
+        var faker = getFaker();
+        var deckCaptor = ArgumentCaptor.forClass(DeckDocument.class);
+        var externalDecks = Stream.generate(() -> DeckDTOFactoryBot.builder().build())
+                .limit(faker.number().randomDigitNotZero())
+                .toList();
+        when(deckRestQueryService.getDecks()).thenReturn(Flux.fromIterable(externalDecks));
+        when(deckRepository.save(deckCaptor.capture())).thenAnswer(invocation -> {
+            var deck = invocation.getArgument(0, DeckDocument.class);
+            return Mono.just(deck.toBuilder()
+                    .id(ObjectId.get().toString())
+                    .createdAt(OffsetDateTime.now())
+                    .updatedAt(OffsetDateTime.now())
+                    .build());
+        });
+        StepVerifier.create(deckService.sync()).verifyComplete();
+        TimeUnit.SECONDS.sleep(2);
+
+        assertThat(deckCaptor.getAllValues().size()).isEqualTo(externalDecks.size());
+        verify(deckRepository, times(externalDecks.size())).save(any());
+        verify(deckRestQueryService).getDecks();
+        verifyNoInteractions(deckQueryService);
+    }
+
+
 }
