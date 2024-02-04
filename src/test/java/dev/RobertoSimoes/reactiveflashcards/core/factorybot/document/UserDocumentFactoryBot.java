@@ -41,8 +41,6 @@ public class UserDocumentFactoryBot {
         }
         public UserDocumentFactoryBotBuilder preUpdate(final String id,final OffsetDateTime createdAt,final OffsetDateTime updatedAt){
             this.id = id;
-            this.createdAt = createdAt;
-            this.updatedAt = updatedAt;
             return  this;
         }
         public UserDocument build(){
