@@ -18,31 +18,43 @@ import static dev.RobertoSimoes.reactiveflashcards.domain.exception.BasedErrorMe
 @Slf4j
 @Service
 public class UserService {
+
     private final UserRepository userRepository;
     private final UserQueryService userQueryService;
 
-    public Mono<UserDocument> save(final UserDocument document) {
-        return userQueryService.findByEmail(document.email()).doFirst(() -> log.info("=== try to save a follow document{}", document)).filter(Objects::isNull).switchIfEmpty(Mono.defer(() -> Mono.error(new EmailAlreadyUsedException(EMAIL_ALREADY_USED.params().getMessage())))).onErrorResume(HttpClientErrorException.NotFound.class, e -> userRepository.save(document));
-
+    public Mono<UserDocument> save(final UserDocument document){
+        return userQueryService.findByEmail(document.email())
+                .doFirst(() -> log.info("==== Try to save a follow user {}", document))
+                .filter(Objects::isNull)
+                .switchIfEmpty(Mono.defer(() ->Mono.error(new EmailAlreadyUsedException(EMAIL_ALREADY_USED
+                        .params(document.email()).getMessage()))))
+                .onErrorResume(NotFoundException.class, e -> userRepository.save(document));
     }
 
-    private Mono<Void> verifyEmail(final UserDocument document) {
+    private Mono<Void> verifyEmail(final UserDocument document){
         return userQueryService.findByEmail(document.email())
                 .filter(stored -> stored.id().equals(document.id()))
-                .switchIfEmpty(Mono.defer(() -> Mono.error(new EmailAlreadyUsedException(EMAIL_ALREADY_USED
-                        .params().getMessage()))))
+                .switchIfEmpty(Mono.defer(() ->Mono.error(new EmailAlreadyUsedException(EMAIL_ALREADY_USED
+                        .params(document.email()).getMessage()))))
                 .onErrorResume(NotFoundException.class, e -> Mono.empty())
                 .then();
     }
 
-    public Mono<UserDocument> update(final UserDocument document) {
-        return verifyEmail(document).then(userQueryService.findbyId(document.id()).map(user -> document.toBuilder().createdAt(user.createdAt()).updatedAt(user.updatedAt()).build()).flatMap(userRepository::save).doFirst(() -> log.info("==== Try do update a user with follow info {}", document)));
+    public Mono<UserDocument> update(final UserDocument document){
+        return verifyEmail(document)
+                .then(Mono.defer(() -> userQueryService.findById(document.id())
+                        .map(user -> document.toBuilder()
+                                .createdAt(user.createdAt())
+                                .updatedAt(user.updatedAt())
+                                .build())
+                        .flatMap(userRepository::save)
+                        .doFirst(() -> log.info("==== Try to update a user with follow info {}", document))));
     }
 
-    public Mono<Void> delete(final String id) {
-        return userQueryService.findbyId(id).flatMap(userRepository::delete).doFirst(() -> log.info("=== Try to delete a user with follow id{}", id));
-
-
+    public Mono<Void> delete(final String id){
+        return userQueryService.findById(id)
+                .flatMap(userRepository::delete)
+                .doFirst(() -> log.info("==== Try to delete a user with follow id {}", id));
     }
 
 }

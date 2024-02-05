@@ -2,7 +2,6 @@ package dev.RobertoSimoes.reactiveflashcards.core.factorybot.document;
 
 import com.github.javafaker.Faker;
 import dev.RobertoSimoes.reactiveflashcards.domain.document.UserDocument;
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 
@@ -39,7 +38,7 @@ public class UserDocumentFactoryBot {
             this.updatedAt = null;
             return  this;
         }
-        public UserDocumentFactoryBotBuilder preUpdate(final String id,final OffsetDateTime createdAt,final OffsetDateTime updatedAt){
+        public UserDocumentFactoryBotBuilder preUpdate(final String id){
             this.id = id;
             return  this;
         }
