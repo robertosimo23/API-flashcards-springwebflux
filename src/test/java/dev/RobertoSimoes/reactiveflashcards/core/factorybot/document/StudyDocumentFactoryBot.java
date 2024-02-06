@@ -41,17 +41,14 @@ public class StudyDocumentFactoryBot {
             this.updatedAt = OffsetDateTime.now();
         }
 
-        public DeckDocumentFactoryBot.DeckDocumentFactoryBotBuilder finishedStudy() {
+        public StudyDocumentFactoryBotBuilder finishedStudy(){
             this.questions.clear();
-            studyDeck.cards().forEach(c -> {
-                questions.add(Question.builder()
-                        .asked(c.front())
-                        .answered(c.back())
-                        .expected(c.back())
-                        .build());
-                return this;
-            });
-
+            studyDeck.cards().forEach(c -> questions.add(Question.builder()
+                    .asked(c.front())
+                    .answered(c.back())
+                    .expected(c.back())
+                    .build()));
+            return this;
         }
 
         public StudyDocumentFactoryBotBuilder preInsert() {
@@ -116,6 +113,30 @@ public class StudyDocumentFactoryBot {
                     .deckId(deck.id())
                     .cards(studyCards)
                     .build();
+        }
+        public StudyDocumentFactoryBotBuilder pendingQuestions(final Integer remain){
+            this.questions.clear();
+            studyDeck.cards().forEach(c -> questions.add(Question.builder()
+                    .asked(c.front())
+                    .answered(c.back())
+                    .expected(c.back())
+                    .build()));
+            var index = questions.size() - remain;
+            while (index < questions.size()) {
+                var selectedStudy = questions.get(index);
+                selectedStudy = Question.builder()
+                        .asked(selectedStudy.asked())
+                        .expected(selectedStudy.expected())
+                        .build();
+                questions.set(index, selectedStudy);
+                ++index;
+            }
+            var positionsToRemove = remain -1;
+            while (positionsToRemove != 0){
+                questions.remove(questions.size() - positionsToRemove);
+                --positionsToRemove;
+            }
+            return this;
         }
     }
 }
