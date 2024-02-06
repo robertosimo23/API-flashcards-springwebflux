@@ -56,4 +56,5 @@ public interface StudyDomainMapper {
     @Mapping(target = "question", ignore = true)
     StudyDocument toDocument(final StudyDTO dto);
 
+    Object toQuestion(Object o);
 }

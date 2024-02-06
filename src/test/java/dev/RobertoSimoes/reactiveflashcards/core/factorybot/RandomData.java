@@ -1,16 +1,15 @@
 package dev.RobertoSimoes.reactiveflashcards.core.factorybot;
 
 import com.github.javafaker.Faker;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class RandomData {
+    @Getter
     private static final Faker faker = new Faker(new Locale("pt", "BR"));
-
-    public static Faker getFaker(){
-        return faker;
-    }
 
     public static <T extends Enum<?>>T randomEnum(final Class<T> clazz){
         var x = new Random().nextInt(clazz.getEnumConstants().length);
