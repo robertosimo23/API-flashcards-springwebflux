@@ -48,7 +48,7 @@ public class StudyDocumentFactoryBot {
                         .asked(c.front())
                         .answered(c.back())
                         .expected(c.back())
-                        .build()));
+                        .build());
                 return this;
             });
 

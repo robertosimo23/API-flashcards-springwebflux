@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+import javax.annotation.processing.Generated;
+
 public abstract class MailMapperDecorator implements MailMapper {
 
     @Qualifier("delegate")
