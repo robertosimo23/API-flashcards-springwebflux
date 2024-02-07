@@ -1,0 +1,24 @@
+[
+{
+  "name": "Estudo de Alemão ",
+  "info": " Estudo Introdutório  ",
+  "author": "Hans-Werner Hector",
+  "cards:": [
+            {
+      "ask" : "Ball",
+    "answer": "Bola"
+            }
+            ]
+},
+  {
+    "name": "Estudo de Alemão Avançado ",
+    "info": "Estudo Avançado de Alemão ",
+    "author": "Dietmar Hopp ",
+    "cards:": [
+      {
+        "ask" :   "Bunch",
+        "answer": "Livro"
+      }
+    ]
+  }
+]
