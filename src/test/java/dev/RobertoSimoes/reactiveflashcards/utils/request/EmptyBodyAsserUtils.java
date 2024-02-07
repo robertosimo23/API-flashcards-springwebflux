@@ -1,4 +1,9 @@
 package dev.RobertoSimoes.reactiveflashcards.utils.request;
 
-public class EmptyBodyAsserUtils {
+import org.springframework.test.web.reactive.server.EntityExchangeResult;
+
+public class EmptyBodyAsserUtils extends AbstractBodyAsserUtils<Void> {
+    public EmptyBodyAsserUtils(EntityExchangeResult<Void> response) {
+        super(response);
+    }
 }
