@@ -28,9 +28,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static dev.RobertoSimoes.reactiveflashcards.core.factorybot.RandomData.getFaker;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.*;
+
 
 @ActiveProfiles("test")
 @ExtendWith((MockitoExtension.class))

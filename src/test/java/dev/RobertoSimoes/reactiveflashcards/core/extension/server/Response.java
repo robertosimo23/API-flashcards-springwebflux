@@ -1,4 +1,4 @@
-package dev.RobertoSimoes.reactiveflashcards.core.extension.mail;
+package dev.RobertoSimoes.reactiveflashcards.core.extension.server;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -9,5 +9,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({PARAMETER, FIELD})
 @Retention(RUNTIME)
-public @interface MailServer {
+public @interface Response {
 }
