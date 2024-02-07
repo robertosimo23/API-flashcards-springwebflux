@@ -2,8 +2,8 @@ spring:
   mongodb:
     embedded:
       version: 5.0.9
-    data:
-      mongodb:
+  data:
+    mongodb:
         port: 27017
         host: localhost
         database: reactive-flashcards
