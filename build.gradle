@@ -69,9 +69,7 @@ dependencies {
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
 
     {
-        artifact {
-            classifier = "osx-aarch_64"
-        }
+
     }
 
     testAnnotationProcessor 'org.projectlombok:lombok'

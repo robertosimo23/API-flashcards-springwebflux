@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
 @Order(-2)
 @Slf4j
 @AllArgsConstructor
-public class apiExceptionHandler implements WebExceptionHandler {
+public class ApiExceptionHandler implements WebExceptionHandler {
 
     private final DeckStudyHandler deckStudyHandler;
     private final EmailAlreadyUsedHandler emailAlreadyUsedHandler;

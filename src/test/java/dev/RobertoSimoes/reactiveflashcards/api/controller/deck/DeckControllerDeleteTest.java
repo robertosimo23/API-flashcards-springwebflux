@@ -1,4 +1,87 @@
 package dev.RobertoSimoes.reactiveflashcards.api.controller.deck;
 
-public class DeckControllerDeleteTest {
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.DeckController;
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.ErrorFieldResponse;
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.ProblemResponse;
+import dev.RobertoSimoes.reactiveflashcards.api.Mapper.DeckMapperImpl;
+import dev.RobertoSimoes.reactiveflashcards.api.controller.AbstractControllerTest;
+import dev.RobertoSimoes.reactiveflashcards.domain.exception.NotFoundException;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.DeckQueryService;
+import dev.RobertoSimoes.reactiveflashcards.domain.service.DeckService;
+import dev.RobertoSimoes.reactiveflashcards.utils.request.RequestBuilder;
+import org.bson.types.ObjectId;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import reactor.core.publisher.Mono;
+
+import static dev.RobertoSimoes.reactiveflashcards.utils.request.RequestBuilder.noContentRequestBuilder;
+import static dev.RobertoSimoes.reactiveflashcards.utils.request.RequestBuilder.problemResponseRequestBuilder;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+@ContextConfiguration(classes = {DeckMapperImpl.class})
+@WebFluxTest(DeckController.class)
+public class DeckControllerDeleteTest extends AbstractControllerTest {
+
+    @MockBean
+    public DeckService deckService;
+    @MockBean
+    public DeckQueryService deckQueryService;
+    private RequestBuilder<Void> noContentRequestBuilder;
+    private RequestBuilder<ProblemResponse> problemResponseRequestBuilder;
+
+
+    @BeforeEach
+    void setup() {
+        noContentRequestBuilder = noContentRequestBuilder(applicationContext, "decks");
+        problemResponseRequestBuilder = problemResponseRequestBuilder(applicationContext, "/decks");
+    }
+
+    @Test
+    void deleteTest() {
+        when(deckService.delete(anyString())).thenReturn(Mono.empty());
+        noContentRequestBuilder.uri(uriBuilder -> uriBuilder
+                        .pathSegment("{id}")
+                        .build(ObjectId.get().toString()))
+                .generateRequestWithoutBody()
+                .doDelete()
+                .httpStatusIsNoContent();
+
+    }
+
+    @Test
+    void whenTryToDeleteNonStoredDeckThenReturnNotFound() {
+        when(deckService.delete(anyString())).thenReturn(Mono.error(new NotFoundException("")));
+        problemResponseRequestBuilder.uri(uriBuilder -> uriBuilder
+                        .pathSegment("{id}")
+                        .build(ObjectId.get().toString()))
+                .generateRequestWithSimpleBody()
+                .doDelete()
+                .httpStatusNotFound()
+                .assertBody(actual -> {
+                    assertThat(actual).isNotNull();
+                    assertThat(actual.status()).isEqualTo(NOT_FOUND.value());
+                });
+    }
+
+    @Test
+    void whenTryUseInvalidIdThenReturnBadRequest() {
+        problemResponseRequestBuilder.uri(uriBuilder -> uriBuilder
+                        .pathSegment("{id}")
+                        .build(faker.lorem().word()))
+                .generateRequestWithSimpleBody()
+                .doDelete()
+                .httpStatusIsBadRequest()
+                .assertBody(actual -> {
+                    assertThat(actual).isNotNull();
+                    assertThat(actual.status()).isEqualTo(BAD_REQUEST.value());
+                    assertThat(actual.fields().stream().map(ErrorFieldResponse::name).toList()).contains("id");
+                });
+    }
+
 }

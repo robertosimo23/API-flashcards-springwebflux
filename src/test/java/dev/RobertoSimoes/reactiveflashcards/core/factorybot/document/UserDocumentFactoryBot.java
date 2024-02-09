@@ -19,8 +19,8 @@ public class UserDocumentFactoryBot {
     public static class UserDocumentFactoryBotBuilder{
 
                    private String id;
-                   private String name;
-                   private String email;
+                   private final String name;
+                   private final String email;
                    private OffsetDateTime createdAt;
                    private OffsetDateTime updatedAt;
                    private final Faker faker = getFaker();

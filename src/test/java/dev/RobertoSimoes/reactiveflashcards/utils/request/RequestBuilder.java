@@ -1,5 +1,6 @@
 package dev.RobertoSimoes.reactiveflashcards.utils.request;
 
+import dev.RobertoSimoes.reactiveflashcards.API.Controller.response.*;
 import org.springframework.cglib.core.internal.Function;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -13,6 +14,37 @@ import java.util.Objects;
 import java.util.Set;
 
 public class RequestBuilder<B> {
+    public static RequestBuilder<Void> noContentRequestBuilder(final ApplicationContext applicationContext,
+                                                               final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, Void.class);
+    }
+
+    public static RequestBuilder<ProblemResponse> problemResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                                final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, ProblemResponse.class);
+    }
+    public static RequestBuilder<DeckResponse> deckResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                       final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, DeckResponse.class);
+    }
+    public static RequestBuilder<UserResponse> userResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                          final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, UserResponse.class);
+    }
+    public static RequestBuilder<UserPageResponse> userPageResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                              final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, UserPageResponse.class);
+    }
+    public static RequestBuilder<QuestionResponse> questionResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                                  final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, QuestionResponse.class);
+    }
+    public static RequestBuilder<AnswerQuestionResponse> answerQuestionResponseRequestBuilder(final ApplicationContext applicationContext,
+                                                                                  final String baseUri) {
+        return new RequestBuilder<>(applicationContext, baseUri, AnswerQuestionResponse.class);
+    }
+
+
     private final WebTestClient webTestClient;
     private Function<UriBuilder, URI> uriFunction;
     private final Map<String, Set<String>> headers = new HashMap<>();
@@ -48,28 +80,28 @@ public class RequestBuilder<B> {
         if (Objects.isNull(uriFunction)) {
             throw new IllegalArgumentException("Informe a uri do recurso a ser consumido");
         }
-        return new SimpleRequestBuilder<>(webTestClient,uriFunction,headers,body,responseClass);
+        return new SimpleRequestBuilder<>(webTestClient, uriFunction, headers, body, responseClass);
     }
 
     public NoBodyRequestBuilder<B> generateRequestWithoutBody() {
         if (Objects.isNull(uriFunction)) {
             throw new IllegalArgumentException("Informe a uri do recurso a ser consumido");
         }
-        if (responseClass!= Void.class){
+        if (responseClass != Void.class) {
             throw new IllegalArgumentException("Use a classe Void para requisições sem response body");
 
         }
-        return new NoBodyRequestBuilder<>(webTestClient,uriFunction,headers, (Objects) body);
+        return new NoBodyRequestBuilder<>(webTestClient, uriFunction, headers, (Objects) body);
     }
 
     public CollectionRequestBuilder<B> generateRequestWithCollectionBody() {
         if (Objects.isNull(uriFunction)) {
             throw new IllegalArgumentException("Informe a uri do recurso");
         }
-        if (responseClass == Void.class){
+        if (responseClass == Void.class) {
             throw new IllegalArgumentException("Use a classe Void para requisições sem response body");
         }
-        return new CollectionRequestBuilder<>(webTestClient,uriFunction,headers,body,responseClass);
+        return new CollectionRequestBuilder<>(webTestClient, uriFunction, headers, body, responseClass);
     }
 
 }
