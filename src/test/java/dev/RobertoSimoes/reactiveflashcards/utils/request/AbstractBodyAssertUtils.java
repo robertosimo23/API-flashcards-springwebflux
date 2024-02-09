@@ -38,6 +38,10 @@ public class AbstractBodyAssertUtils<B> {
         assertThat(response.getStatus()).isEqualTo(NOT_FOUND);
         return this;
     }
+    public AbstractBodyAssertUtils<B> httpStatusIsConflict(){
+        assertThat(response.getStatus()).isEqualTo(CONFLICT);
+        return this;
+    }
 
 
 
